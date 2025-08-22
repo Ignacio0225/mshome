@@ -1,0 +1,141 @@
+/* 썸네일 그리드 */
+.grid {
+    margin: 5rem 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+    padding: 8px;
+}
+
+.item {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+}
+
+.thumbBtn {
+    display: block;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    width: 100%;
+    cursor: pointer;
+}
+
+.img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+}
+
+/* 빈 상태 */
+.empty {
+    padding: 24px;
+    text-align: center;
+    color: #666;
+}
+
+/* 라이트박스 모달 */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .6);
+    display: grid;
+    place-items: center;
+    z-index: 9999;
+    animation: fadeIn .15s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
+.dialog {
+    position: relative;
+    width: min(90vw, 1080px);
+    height: min(80vh, 80vw * 0.66); /* 3:2 근사 비율; 원하시면 aspect-ratio 사용 */
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+}
+
+.largeImg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 사진 전체 보이게; 꽉 채우고 싶으면 cover */
+    background: #000;
+}
+
+/* 닫기 버튼 */
+.closeBtn {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .15);
+    color: #fff;
+    font-size: 30px;
+    line-height: 36px;
+    cursor: pointer;
+}
+
+.closeBtn:hover {
+    background: rgba(255, 255, 255, .25);
+}
+
+/* 내비게이션 버튼 */
+.navBtn {
+    position: absolute;
+    top: 50%;
+    translate: 0 -50%;
+    width: 44px;
+    height: 64px;
+    border: 0;
+    background: rgba(255, 255, 255, .15);
+    color: #fff;
+    font-size: 36px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.navBtn:hover {
+    background: rgba(255, 255, 255, .25);
+}
+
+.prev {
+    left: 8px;
+}
+
+.next {
+    right: 8px;
+}
+
+/* 캡션/카운터 */
+.caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 8px 14px;
+    color: #fff;
+    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, .55));
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 14px;
+}
+
+.counter {
+    opacity: .8;
+    font-variant-numeric: tabular-nums;
+}
