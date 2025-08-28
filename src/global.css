@@ -1,187 +1,250 @@
-/* 기본 리셋 및 폰트 설정 */
+/* ===== global.css (2025 tone) ===== */
+:root {
+    --site-header-h: 64px;
+
+    /* colors & tokens */
+    --ink: #0f1115;
+    --muted: #6c757d;
+    --line: rgba(0, 0, 0, .08);
+    --card: rgba(255, 255, 255, .92);
+    --card-2: rgba(255, 255, 255, .8);
+    --accent: #111;
+
+    /* layout */
+    --gutter: clamp(12px, 2vw, 20px); /* 좌우 기본 패딩 */
+    --container-max: 1320px; /* 메인 컨테이너 최대폭 */
+    --page-pad: clamp(16px, 3vw, 32px);
+
+
+    /* 전역 읽기 폭 캡 (큰 화면에서 자동으로 줄이기) */
+    --content-max: 68rem; /* 섹션 최대폭(~1088px) */
+    --card-max: 62rem; /* 카드/패널 최대폭(~992px) */
+    --measure: 72ch; /* 문단 줄길이(가독 최적) */
+
+    --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "맑은 고딕", sans-serif;
+}
+
+/* Reset */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--site-header-h) + 12px);
+}
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-                sans-serif;
+    font-family: var(--font-sans);
+    font-weight: 500;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-image: url("/background.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: repeat;
-    background-attachment: fixed;
-    color: #212529;
-    line-height: 1.5;
-    overflow-x: hidden;
+
+    /* 밤바다 배경 + 어둡게 오버레이 */
+    background: radial-gradient(80% 60% at 50% 0%, rgba(0, 0, 0, .35), rgba(0, 0, 0, .55)),
+    url("/background.jpg") center/cover fixed no-repeat;
+    color: #e9ecef;
+    line-height: 1.6;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* 스크롤바 스타일링 */
-::-webkit-scrollbar {
-    width: 6px;
+h1, h2, h3 {
+    font-weight: 750;
+    letter-spacing: .2px;
 }
 
-::-webkit-scrollbar-track {
-    background: rgba(248, 249, 250, 0.8);
-    border-radius: 3px;
+strong, .sectionTitle {
+    font-weight: 700;
 }
 
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #6c757d, #495057);
-    border-radius: 3px;
-    transition: all 0.2s ease;
+small, .caption {
+    font-weight: 450;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #495057, #343a40);
+.tabular {
+    font-variant-numeric: tabular-nums;
 }
 
-/* 선택 텍스트 스타일 */
-::selection {
-    background: rgba(0, 0, 0, 0.1);
-    color: #212529;
-}
-
-::-moz-selection {
-    background: rgba(0, 0, 0, 0.1);
-    color: #212529;
-}
-
-/* 기본 링크 스타일 */
+/* links & forms */
 a {
-    color: #000;
+    color: #fff;
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: color .2s, opacity .2s;
 }
 
 a:hover {
-    color: #333;
+    opacity: .9;
 }
 
-/* 기본 버튼 스타일 */
-button {
+button, input, textarea, select {
     font-family: inherit;
+    transition: all .2s;
+}
+
+button {
     cursor: pointer;
     border: none;
-    outline: none;
-    transition: all 0.2s ease;
 }
 
 button:disabled {
     cursor: not-allowed;
-    opacity: 0.6;
+    opacity: .5;
 }
 
-/* 기본 입력 필드 스타일 */
-input, textarea, select {
-    font-family: inherit;
-    outline: none;
-    transition: all 0.2s ease;
-}
-
-/* 포커스 아웃라인 */
-input:focus, textarea:focus, select:focus, button:focus {
-    outline: 2px solid rgba(0, 0, 0, 0.2);
-    outline-offset: 1px;
-}
-
-/* 메인 컨테이너 */
-main {
-    min-height: calc(100vh - 64px);
-    padding-top: 1.5rem;
-}
-
-/* 카드 컴포넌트 기본 스타일 */
+/* card */
 .card {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 8px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: all 0.2s ease;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, .08);
+    transition: transform .15s, box-shadow .15s;
 }
 
 .card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, .12);
 }
 
-/* 애니메이션 클래스 */
+/* ✅ 전역 컨테이너: 모든 페이지는 main이 담당(왼쪽 여백 최소화) */
+main {
+    box-sizing: border-box; /* 패딩을 width 안으로 */
+    width: 100%; /* 화면 폭을 넘지 않음 */
+    max-width: var(--container-max); /* 큰 화면에서만 상한 */
+    margin: 0 auto; /* 중앙 정렬(잘림 방지) */
+    padding-inline: var(--page-pad); /* 좌우 패딩 */
+    min-height: calc(100vh - var(--site-header-h));
+    padding-top: 1rem;
+}
+
+/* 중앙 정렬이 ‘필요한 섹션만’ 선택적으로 사용 */
+.container,
+.container.center {
+    width: min(1120px, 92vw);
+    margin-inline: auto;
+}
+
+/* 섹션 공통: 앵커 점프 시 헤더와 겹침 방지 */
+.section {
+    scroll-margin-top: calc(var(--site-header-h) + 12px);
+}
+
+/* 스크롤바 */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, .08);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #778, #556);
+    border-radius: 999px;
+}
+
+/* motion */
 .fade-in {
-    animation: fadeIn 0.4s ease;
+    animation: fadeIn .35s ease both;
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(15px);
+        transform: translateY(8px)
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0)
     }
 }
 
-.slide-up {
-    animation: slideUp 0.3s ease;
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* 로딩 애니메이션 */
-.loading {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    border: 2px solid rgba(0, 0, 0, 0.1);
-    border-top: 2px solid #000;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* 반응형 헬퍼 클래스 */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-@media (min-width: 640px) {
-    .container {
-        padding: 0 1.5rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    .container {
-        padding: 0 2rem;
-    }
-}
-
-/* 접근성 개선 */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
-        animation-duration: 0.01ms !important;
+        animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+        transition-duration: .01ms !important;
     }
+}
+
+/* 🔁 공통 유틸: 자동 반응형 그리드(4→3→2→1) */
+.auto-grid {
+    --grid-cols: 4;
+    display: grid;
+    grid-template-columns: repeat(var(--grid-cols), minmax(180px, 1fr));
+    gap: clamp(14px, 2.2vw, 24px);
+}
+
+@media (max-width: 1280px) {
+    .auto-grid {
+        --grid-cols: 3;
+    }
+}
+
+@media (max-width: 960px) {
+    .auto-grid {
+        --grid-cols: 2;
+    }
+}
+
+@media (max-width: 560px) {
+    .auto-grid {
+        --grid-cols: 1;
+        gap: 16px;
+    }
+}
+
+/* 필요시 내부 가로 스크롤 허용 */
+.scroll-x {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px;
+}
+
+/* ====================================================================== */
+/* 📏 전역 읽기 폭 캡(컴포넌트 수정 없이, 큰 화면에서 자동으로 줄이기)   */
+/* ====================================================================== */
+
+/* 1) 큰 화면에서 섹션 자체 폭 제한 (왼쪽 정렬 유지) */
+@media (min-width: 1200px) {
+    main > section {
+        max-width: var(--content-max);
+    }
+}
+
+/* 2) 섹션 안의 카드/패널을 더 좁게 제한 (왼쪽 정렬 유지) */
+@media (min-width: 1200px) {
+    main > section > .card,
+    main > section > * > .card {
+        max-width: min(var(--card-max), 96%);
+    }
+}
+
+/* 3) 카드 내부 본문 줄길이(문단 폭) 제한 → 과도한 가로 길이 방지 */
+main :where(.card) :where(p, ul, ol) {
+    max-width: var(--measure);
+}
+
+/* 4) 큰 화면에서 여백/둥근 모서리도 살짝 반응형으로 */
+.card {
+    padding: clamp(12px, 1.4vw, 20px);
+    border-radius: clamp(10px, 1.2vw, 14px);
+}
+
+/* 5) (옵션) 풀블리드가 필요한 특정 섹션/카드를 위한 옵트아웃 유틸 */
+.full-bleed {
+    max-width: none !important;
+}
+
+.card-full {
+    max-width: none !important;
+}
+
+.prose-full {
+    max-width: none !important;
 }

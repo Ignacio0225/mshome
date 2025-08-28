@@ -1,141 +1,80 @@
+/* ===== Photos.module.css ===== */
 /* 썸네일 그리드 */
-.grid {
-    margin: 5rem 5rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 12px;
-    padding: 8px;
+.grid{
+  width:min(1120px, 92vw);
+  margin:28px auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(180px, 1fr));
+  gap:14px;
 }
-
-.item {
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
-}
-
-.thumbBtn {
-    display: block;
-    border: 0;
-    padding: 0;
-    background: transparent;
-    width: 100%;
-    cursor: pointer;
-}
-
-.img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    display: block;
-}
+.item{ border-radius:14px; overflow:hidden; box-shadow:0 8px 22px rgba(0,0,0,.16); }
+.thumbBtn{ display:block; width:100%; border:0; padding:0; background:transparent; cursor:pointer; }
+.img{ width:100%; height:180px; object-fit:cover; display:block; }
 
 /* 빈 상태 */
-.empty {
-    padding: 24px;
-    text-align: center;
-    color: #666;
+.empty{ padding:24px; text-align:center; color:#cbd5e1; }
+
+/* 라이트박스 */
+.overlay{
+  position:fixed; inset:0; z-index:9999;
+  background:rgba(0,0,0,.65);
+  display:grid; place-items:center;
+  animation:fadeIn .2s ease;
+}
+.dialog{
+  position:relative;
+  width:min(92vw, 1080px);
+  height:min(80vh, 92vw * .6);
+  background:#000; border-radius:14px; overflow:hidden;
+  box-shadow:0 24px 64px rgba(0,0,0,.45);
+}
+.largeImg{ width:100%; height:100%; object-fit:contain; background:#000; }
+
+/* 컨트롤 */
+.closeBtn{
+  position:absolute; top:10px; right:12px;
+  width:42px; height:42px; border:0; border-radius:999px;
+  background:rgba(255,255,255,.16); color:#fff; font-size:28px; line-height:42px;
+}
+.closeBtn:hover{ background:rgba(255,255,255,.26); }
+
+.navBtn{
+  position:absolute; top:50%; translate:0 -50%;
+  width:48px; height:70px; border:0; cursor:pointer; user-select:none;
+  background:rgba(255,255,255,.16); color:#fff; font-size:34px;
+}
+.navBtn:hover{ background:rgba(255,255,255,.26); }
+.prev{ left:10px; } .next{ right:10px; }
+
+.caption{
+  position:absolute; inset-inline:0; bottom:0;
+  padding:10px 14px; display:flex; justify-content:space-between; align-items:flex-end;
+  color:#fff; background:linear-gradient(180deg, transparent, rgba(0,0,0,.6));
+  font-size:.95rem;
+}
+.counter{ opacity:.85; font-variant-numeric:tabular-nums; }
+
+@keyframes fadeIn{ from{opacity:0} to{opacity:1} }
+
+/* 모달 하단 메타 영역 */
+.meta{
+  position:absolute; left:0; right:0; bottom:0;
+  padding:12px 14px 14px;
+  color:#fff;
+  background:linear-gradient(180deg, transparent, rgba(0,0,0,.65));
+}
+.captionRow{
+  display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
+  font-weight:600;
+}
+.title{
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.desc{
+  margin-top:6px;
+  font-size:.95rem; line-height:1.5;
+  max-height: 7.5em;      /* 설명이 길면 내부 스크롤 */
+  overflow:auto;
 }
 
-/* 라이트박스 모달 */
-.overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, .6);
-    display: grid;
-    place-items: center;
-    z-index: 9999;
-    animation: fadeIn .15s ease;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0
-    }
-    to {
-        opacity: 1
-    }
-}
-
-.dialog {
-    position: relative;
-    width: min(90vw, 1080px);
-    height: min(80vh, 80vw * 0.66); /* 3:2 근사 비율; 원하시면 aspect-ratio 사용 */
-    background: #000;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
-}
-
-.largeImg {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* 사진 전체 보이게; 꽉 채우고 싶으면 cover */
-    background: #000;
-}
-
-/* 닫기 버튼 */
-.closeBtn {
-    position: absolute;
-    top: 8px;
-    right: 10px;
-    width: 40px;
-    height: 40px;
-    border: 0;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, .15);
-    color: #fff;
-    font-size: 30px;
-    line-height: 36px;
-    cursor: pointer;
-}
-
-.closeBtn:hover {
-    background: rgba(255, 255, 255, .25);
-}
-
-/* 내비게이션 버튼 */
-.navBtn {
-    position: absolute;
-    top: 50%;
-    translate: 0 -50%;
-    width: 44px;
-    height: 64px;
-    border: 0;
-    background: rgba(255, 255, 255, .15);
-    color: #fff;
-    font-size: 36px;
-    cursor: pointer;
-    user-select: none;
-}
-
-.navBtn:hover {
-    background: rgba(255, 255, 255, .25);
-}
-
-.prev {
-    left: 8px;
-}
-
-.next {
-    right: 8px;
-}
-
-/* 캡션/카운터 */
-.caption {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 8px 14px;
-    color: #fff;
-    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, .55));
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    font-size: 14px;
-}
-
-.counter {
-    opacity: .8;
-    font-variant-numeric: tabular-nums;
-}
+/* 사용 중이면 유지, 아니면 기존 .caption 관련 규칙은 삭제 가능 */

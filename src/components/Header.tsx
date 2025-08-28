@@ -13,6 +13,7 @@ export default function Header() {
         if (path.includes('/contact')) return 'contact';
         if (path.includes('/photos')) return 'photos';
         if (path.includes('/about')) return 'about';
+        if (path.includes('/vision')) return 'vision';
         return '';
     };
     const currentPage = getCurrentPage();
@@ -36,7 +37,7 @@ return (
                                 // currentPage 는 /페이지이름 에 따라 active css 적용을 위함
                                 className={`${styles.navBtn} ${currentPage === 'intro' ? styles.active : ''}`}
                             >
-                                Introduction
+                                회사 소개
                             </button>
                             <button
 
@@ -44,8 +45,16 @@ return (
                                 // currentPage 는 /페이지이름 에 따라 active css 적용을 위함
                                 className={`${styles.navBtn} ${currentPage === 'about' ? styles.active : ''}`}
                             >
-                                About Us
+                                사업분야
                             </button>
+
+                            <button
+                            onClick={() => nav('/vision')}
+                            className={`${styles.navBtn} ${currentPage === 'vision' ? styles.active : ''}`}>
+                                비전
+                            </button>
+
+
                             <button
 
                                 onClick={() => nav('/contact')}
@@ -58,7 +67,7 @@ return (
                             <button
                             onClick={() => nav('/photos')}
                             className={`${styles.navBtn} ${currentPage === 'photos' ? styles.active : ''}`}>
-                                Photos
+                                현장 사진
                             </button>
                     </div>
             </div>

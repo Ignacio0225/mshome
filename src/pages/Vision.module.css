@@ -1,0 +1,35 @@
+/* ===== Vision.module.css (polish) ===== */
+:root{ --site-header-h: 64px; }
+.container{ padding:40px 0 56px; color:#fff; }
+.wrap{ width:min(1120px, 92vw); margin:0 auto; display:grid; gap:28px; }
+
+.grid2{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+@media (max-width:900px){ .grid2{ grid-template-columns:1fr; } }
+
+.card{
+  position:relative; background:linear-gradient(180deg, var(--card), var(--card-2));
+  color:var(--ink); border:1px solid rgba(0,0,0,.06); border-radius:16px; padding:18px 20px;
+  box-shadow:0 10px 26px rgba(0,0,0,.08); backdrop-filter:saturate(120%) blur(4px);
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.card:hover{ transform:translateY(-3px); box-shadow:0 16px 34px rgba(0,0,0,.12); }
+
+.sectionTitle{
+  margin:0 0 8px; padding-left:12px; border-left:4px solid var(--accent);
+  font-size:1.35rem; font-weight:800; color:var(--ink);
+}
+.text{ margin:2px 0 0; color:#1f242a; }
+
+.section{ scroll-margin-top: calc(var(--site-header-h) + 16px); }
+.strategyGrid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+@media (max-width:900px){ .strategyGrid{ grid-template-columns:1fr; } }
+
+.badge{
+  width:34px; height:34px; border-radius:10px; display:grid; place-items:center;
+  background:linear-gradient(135deg, var(--accent), #2a2a2a); color:#fff; font-weight:800;
+  box-shadow:0 6px 14px rgba(0,0,0,.15); margin-bottom:8px;
+}
+.subTitle{ margin:2px 0 8px; font-size:1.05rem; font-weight:700; color:var(--ink); }
+.list{ margin:0 0 0 18px; }
+.list li{ margin:6px 0; color:#1f242a; }
+.list li::marker{ color:var(--accent); }

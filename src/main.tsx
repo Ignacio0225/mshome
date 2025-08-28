@@ -3,6 +3,9 @@ import { createRoot } from 'react-dom/client'
 // react-route-dom 을 설치후 import
 import {RouterProvider, createBrowserRouter} from 'react-router-dom'
 
+
+import "pretendard/dist/web/variable/pretendardvariable.css";
+
 import './global.css'
 
 import Home from "./pages/Home.tsx";
@@ -12,6 +15,7 @@ import NotFound from "./NotFound.tsx";
 import Contact from "./pages/Contact.tsx";
 import Photos from "./pages/Photos.tsx";
 import About from "./pages/About.tsx";
+import Vision from "./pages/Vision.tsx";
 
 
 const router=createBrowserRouter([
@@ -23,6 +27,7 @@ const router=createBrowserRouter([
             {path:'/', element: <Home/>,},
             {path:'/intro', element:<Intro/>},
             {path:'/contact', element:<Contact/>},
+            {path:'/Vision',element:<Vision/>},
             {path:'/about',element:<About/>},
             {path:'/photos',element:<Photos/>},
             {path:'*',element:<NotFound/>},

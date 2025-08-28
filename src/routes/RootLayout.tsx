@@ -5,10 +5,15 @@ import Header from "../components/Header";
 
 
 
-export default function RootLayout(){
-    return <>
-    {/*헤더 부분을 계속 사용하기위해 사용(계속 출력 해주기 위함)*/}
-    <Header/>
-        <Outlet/>
+export default function RootLayout() {
+  return (
+    <>
+      {/* 항상 보이는 헤더 */}
+      <Header />
+      {/* ✅ 전역 레이아웃(폭/여백)은 main이 담당 */}
+      <main>
+        <Outlet />
+      </main>
     </>
+  );
 }

@@ -2,14 +2,20 @@ import {useEffect, useState} from "react";
 import classes from "./Home.module.css";
 
 
-import slide1 from '../assets/zhonghai777_1.jpeg';
-import slide2 from '../assets/maohong_1.jpeg';
+import slide1 from '/public/mscntr.jpeg';
+import slide2 from '../assets/d15.jpeg'
+import slide3 from '../assets/d9.jpeg'
+import slide4 from '../assets/d16.jpeg'
+import slide5 from '/public/mscntr2.jpeg';
 
 
 
 const images = [
     {image: slide1, alt: 'slide1'},
     {image: slide2, alt: 'slide2'},
+    {image: slide3, alt: 'slide1'},
+    {image: slide4, alt: 'slide1'},
+    {image: slide5, alt: 'slide1'},
 ];
 
 
