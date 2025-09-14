@@ -159,7 +159,7 @@ export default function Intro() {
                     {/* 조직도 */}
                     <section id="org" className={styles.section}>
                         <h2>조직도</h2>
-
+                        <div className={styles.orgScroll}>
                         <div className={`${styles.org} ${styles.orgCompact}`}>
                             {/* 최상단: 대표이사 */}
                             <div className={styles.ceo}>대표이사</div>
@@ -175,6 +175,7 @@ export default function Intro() {
                                     <li className={styles.nodeBlue}>선적관리팀</li>
                                 </ul>
                             </div>
+                        </div>
                         </div>
                     </section>
 

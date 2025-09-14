@@ -1,33 +1,89 @@
-/* ===== Intro.module.css ===== */
-.container{ padding:36px 0 48px; color:#fff; }
-.wrap{ width:min(1120px, 92vw); margin:0 auto; display:grid; gap:28px; }
+/* ===== Intro.module.css (RESET LAYOUT) ===== */
 
-/* 헤더(인사말) */
+/* 공통 래퍼: 양옆 여백 확보 + 중앙 고정 */
+.container{ padding:36px 0 48px; color:#fff; }
+.wrap{
+  width: min(1120px, calc(100% - 24px));
+  margin: 0 auto;
+}
+
+/* ===== 좌측 TOC + 우측 본문 2열 기본 ===== */
+.layout{
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr); /* ← 우측 칸이 반드시 줄어듦 */
+  gap: 20px;
+  align-items: start;
+}
+
+/* 그리드 자식은 전부 줄어들 수 있게 (오버플로 방지 안전망) */
+.layout > *{ min-width: 0; }
+
+/* 좌측 TOC */
+.toc{
+  position: sticky;
+  top: calc(var(--site-header-h, 56px) + 12px);
+  align-self: start;
+}
+.tocList{
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: 8px;
+}
+.tocLink{
+  display: grid; grid-template-columns: 32px 1fr; gap: 10px;
+  align-items: center; text-decoration: none;
+  background: var(--card); color: var(--ink);
+  border: 1px solid var(--line);
+  padding: 8px 10px; border-radius: 12px;
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+}
+.tocLink:hover,
+.tocLink.active{
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);
+  background: #fff;
+}
+.tocBadge{
+  width:28px; height:28px; border-radius:8px;
+  display:grid; place-items:center;
+  background:#111; color:#fff; font-weight:700;
+}
+.tocText small{ display:block; color:var(--muted); margin-top:2px; }
+
+/* ===== 우측 본문 공통 ===== */
+.section{ scroll-margin-top: calc(var(--site-header-h, 56px) + 16px); min-width:0; }
 .header{ text-align:center; }
 .header h1{
   display:inline-block; background:#fff; color:var(--ink);
   padding:.6rem 1rem; border-radius:12px; margin-bottom:10px; opacity:.95;
 }
+
+/* 인사말 박스 */
 .greeting{
-  max-width:94ch; margin:0 auto; text-align:left;
-  background:var(--card); color:var(--ink);
-  border:1px solid var(--line); border-radius:12px; padding:14px 16px; box-shadow:0 10px 26px rgba(0,0,0,.06);
+  /* 모바일에서 가로 꽉 차야 하므로 max-width 과도 제한 제거 */
+  max-width: none; width: 100%;
+  margin: 0 auto; text-align: left;
+  background: var(--card); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 12px;
+  padding: 14px 16px; box-shadow: 0 10px 26px rgba(0,0,0,.06);
+
+  /* 오버플로 방지 3종 세트 */
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: keep-all;
 }
 
-/* 공통 섹션 */
 .section h2{
-  font-size:1.8rem; margin:0 0 10px; padding-left:10px; border-left:4px solid var(--accent);
+  font-size: 1.8rem; margin: 0 0 10px;
+  padding-left: 10px; border-left: 4px solid var(--accent);
 }
 
-/* 타임라인 */
+/* ===== 타임라인 ===== */
 .timeline{ position:relative; list-style:none; margin:10px 0 24px; padding:0; }
 .timeline::before{
   content:""; position:absolute; left:30px; top:0; bottom:0; width:2px;
   background:linear-gradient(180deg,#e9ecef,#ced4da);
 }
-.item{ position:relative; display:grid; grid-template-columns:80px 1fr; gap:14px; padding:12px 0; }
-
-/* ✦ 타임라인 연도 뱃지 */
+.item{ position:relative; display:grid; grid-template-columns:80px minmax(0,1fr); gap:14px; padding:12px 0; }
 .yearBadge{
   position:relative; z-index:1; width:56px; height:56px; border-radius:14px;
   display:grid; place-items:center;
@@ -37,167 +93,60 @@
   content:""; position:absolute; right:-18px; top:50%; transform:translateY(-50%);
   width:12px; height:12px; background:#000; border-radius:999px; box-shadow:0 0 0 4px #fff;
 }
-
 .content{
   background:var(--card); color:var(--ink); border:1px solid var(--line);
   border-radius:14px; padding:14px 16px; transition:transform .15s ease, box-shadow .15s ease;
+  min-width:0; overflow-wrap:anywhere;
 }
 .content:hover{ transform:translateY(-2px); box-shadow:0 16px 34px rgba(0,0,0,.12); }
 .title{ margin:0 0 6px; color:var(--ink); }
 .desc{ margin:0; color:#222; line-height:1.65; }
 
-/* 조직도/지도 */
+/* ===== 조직도/지도 ===== */
 .figure{ margin:0; }
 .image{ width:100%; aspect-ratio:16/9; object-fit:contain; background:#fff; border-radius:12px; }
 .addressBlock{ background:#fff; color:var(--ink); border-radius:12px; padding:12px 14px; }
 .map{ width:100%; height:320px; border:0; border-radius:12px; margin-top:10px; }
 
-@media (max-width:640px){
-  .item{ grid-template-columns:64px 1fr; }
+/* ===== 반응형 ===== */
+@media (max-width: 1024px){
+  /* 1열 스택 + TOC 가로 스크롤 */
+  .layout{ grid-template-columns: 1fr; }
+  .toc{ position: static; order: -1; }
+  .tocList{
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  .tocLink{ white-space: nowrap; }
+}
+
+@media (max-width: 640px){
+  .item{ grid-template-columns:64px minmax(0,1fr); }
   .yearBadge{ width:48px; height:48px; border-radius:12px; }
   .timeline::before{ left:26px; }
+  .level{ --cols: 1; }       /* 모바일은 1열 */
 }
-
-/* --- Left TOC --- */
-.layout{
-  width:min(1120px, 92vw);
-  margin:16px auto 0;
-  display:grid;
-  grid-template-columns:280px 1fr;
-  gap:20px;
-}
-.toc{
-  position:sticky;
-  top:calc(var(--site-header-h) + 12px);
-  align-self:start;
-}
-.tocList{
-  list-style:none;
-  margin:0; padding:0;
-  display:grid; gap:8px;
-}
-.tocLink{
-  display:grid;
-  grid-template-columns:32px 1fr;
-  gap:10px; align-items:center;
-  text-decoration:none;
-  background:var(--card); color:var(--ink);
-  border:1px solid var(--line);
-  padding:8px 10px; border-radius:12px;
-  transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
-}
-.tocLink:hover{
-  transform:translateY(-1px);
-  box-shadow:0 8px 22px rgba(0,0,0,.08);
-  background:#fff;
-}
-/* 현재 섹션 Active 표시 */
-.tocLink.active{
-  background:#fff;
-  transform:translateY(-1px);
-  box-shadow:0 8px 22px rgba(0,0,0,.08);
-}
-
-/* ✦ TOC 전용 뱃지 (점 안 찍힘) */
-.tocBadge{
-  width:28px; height:28px; border-radius:8px;
-  display:grid; place-items:center;
-  background:#111; color:#fff; font-weight:700;
-}
-
-.tocText small{ display:block; color:var(--muted); margin-top:2px; }
-
-.content{ }
-.section{ scroll-margin-top: calc(var(--site-header-h) + 16px); }
-
-@media (max-width:960px){
-  .layout{ grid-template-columns:1fr; }
-  .toc{ position:static; order:-1; }
-  .tocList{
-    grid-auto-flow:column;
-    grid-auto-columns:max-content;
-    overflow-x:auto; padding-bottom:4px;
-  }
-  .tocLink{ white-space:nowrap; }
-}
-
-
-
-/* ===== Org Chart (CEO center + 4 columns + connectors) ===== */
-.org{
-  width: min(1120px, 92vw);
-  margin: 8px auto 0;
-  position: relative;
-}
-
-/* 대표이사 (가운데 원형) */
-.ceo{
-  width: 112px; height: 112px; border-radius: 999px;
-  margin: 0 auto 18px;
-  display: grid; place-items: center;
-  background: linear-gradient(180deg, #0f1b2e, var(--accent, #2c5bd8));
-  color: #fff; font-weight: 800;
-  box-shadow: 0 18px 36px rgba(0,0,0,.18);
-  position: relative;
-}
-/* CEO → 수평 기준선으로 내려오는 수직선 */
-.ceo::after{
-  content: "";
-  position: absolute; left: 50%; transform: translateX(-50%);
-  bottom: -18px; width: 2px; height: 18px;
-  background: var(--line, rgba(0,0,0,.18));
-}
-
-/* 가로가 좁을 때만 자연스런 스크롤 */
-.orgScroll{ overflow-x: auto; padding-bottom: 6px; }
-
-/* 1 레벨 (4열 균등) */
+/* 기본은 4열 */
 .level{
-  --cols: 4;                          /* 열 수 */
-  position: relative;
-  list-style: none;
-  margin: 18px 0 0;
-  padding: 28px 0 0;                  /* 위쪽에 연결선 공간 */
+  --cols: 4;
   display: grid;
-  grid-template-columns: repeat(var(--cols), minmax(180px, 1fr));
+  grid-template-columns: repeat(var(--cols), minmax(140px, 1fr));
   gap: 22px;
   width: 100%;
-}
-/* 수평 기준선 */
-.level::before{
-  content: "";
-  position: absolute; left: 0; right: 0; top: 0; height: 2px;
-  background: var(--line, rgba(0,0,0,.18));
-}
-/* 각 카드 위로 내려오는 수직선 */
-.level > li{
-  position: relative; text-align: center;
-}
-.level > li::before{
-  content: "";
-  position: absolute; top: -28px; left: 50%; transform: translateX(-50%);
-  width: 2px; height: 28px;
-  background: var(--line, rgba(0,0,0,.18));
+  min-width: 0;              /* ← 줄어들 수 있게 */
 }
 
-/* 메인 카드(파란 박스) */
-.nodeBlue{
-  background: linear-gradient(180deg, #0f1b2e, var(--accent, #2c5bd8));
-  color: #fff; font-weight: 800;
-  border-radius: 22px; padding: 20px 16px; min-height: 96px;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 16px 30px rgba(0,0,0,.18);
+/* 작은 화면에서는 자동으로 열 수 줄이기 */
+@media (max-width: 1200px){
+  .level{ --cols: 2; }       /* 태블릿 정도면 2열 */
 }
 
-/* “orgCompact”는 라인 톤만 살짝 약하게(네 JSX에 포함됨) */
-.orgCompact .ceo::after,
-.orgCompact .level::before,
-.orgCompact .level > li::before{
-  background: rgba(0,0,0,.12);
+/* org 전체를 스크롤 허용 컨테이너로 */
+.orgScroll{
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 6px;
 }
-
-/* 반응형: 좁은 화면에서는 2열로 자동 전환 */
-@media (max-width: 960px){
-  .level{ --cols: 2; }
-  .nodeBlue{ min-height: 84px; border-radius: 18px; }
-}
+.orgScroll > .org{ min-width: 600px; } /* 너무 좁아지면 카드 찌그러지니 안전 폭 */
