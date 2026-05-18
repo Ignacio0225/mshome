@@ -19,48 +19,43 @@ import styles from "./Contact.module.css";
 export default function Contact() {
     return (
         <div className={styles.container}>
-            {/*<h1 className={styles.title}>Sales</h1>*/}
-
-            {/*<div className={styles.contacts}>*/}
-            {/*    {salesContacts.map((c) => (*/}
-            {/*        <div key={c.phone} className={styles.card}>*/}
-            {/*            <h2>{c.name}</h2>*/}
-            {/*            <p>{c.role}</p>*/}
-            {/*            <p>☎ {c.phone}</p>*/}
-            {/*        </div>*/}
-            {/*    ))}*/}
-            {/*</div>*/}
-            {/*<h1 className={styles.title}>Operator</h1>*/}
-
-            {/*<div className={styles.contacts}>*/}
-            {/*    {operatorContacts.map((c) => (*/}
-            {/*        <div key={c.phone} className={styles.card}>*/}
-            {/*            <h2>{c.name}</h2>*/}
-            {/*            <p>{c.role}</p>*/}
-            {/*            <h3 className={styles.assignedPort}>{c.assignedPort}</h3>*/}
-            {/*            {c.phone && <p>☎ {c.phone}</p>}*/}
-            {/*            {c.fax && <p>📠 {c.fax}</p>}*/}
-            {/*            {c.email && <h3>📧 {c.email}</h3> }*/}
-            {/*        </div>*/}
-            {/*    ))}*/}
-            {/*</div>*/}
-
+            <header className={styles.header}>
+                <p className={styles.eyebrow}>CONTACT US</p>
+                <h1>문의 및 오시는 길</h1>
+                <p>운송 문의, 스케줄 확인, 파트너십 상담은 대표 연락처로 문의해 주세요.</p>
+            </header>
             <div className={styles.address}>
-                <h2>☎ 032-891-7003</h2>
-                <h2>📠 032-891-8003</h2>
-                <a className={styles.email} href="mailto:mssp@msshipping.kr">📧 mssp@msshipping.kr</a>
+                <div className={styles.contactGrid}>
+                    <a href="tel:+82328917003" className={styles.contactItem}>
+                        <span>전화</span>
+                        <strong>032-891-7003</strong>
+                    </a>
+                    <div className={styles.contactItem}>
+                        <span>팩스</span>
+                        <strong>032-891-8003</strong>
+                    </div>
+                    <a className={styles.contactItem} href="mailto:mssp@msshipping.kr">
+                        <span>이메일</span>
+                        <strong>mssp@msshipping.kr</strong>
+                    </a>
+                </div>
 
                 <h2>Address</h2>
                 <p>인천광역시 연수구 능허대로 136 KT송도빌딩 별관 1층 명성해운</p>
                 <p>1F, 136, Neungheodae-ro, Yeonsu-gu, Incheon, Republic of Korea (KT Songdo Annexed B/D) 〶 21960</p>
-                {/* 지도 연동 */}
-                <iframe
-                    title="map"
-                    src="https://maps.google.com/maps?q=인천광역시 연수구 능허대로 136&output=embed"
-                    width="100%"
-                    height="300"
-                    style={{border: 0}}
-                />
+                <div className={styles.mapPanel}>
+                    <div>
+                        <strong>KT송도빌딩 별관 1층</strong>
+                        <span>인천광역시 연수구 능허대로 136</span>
+                    </div>
+                    <a
+                        href="https://maps.google.com/?q=인천광역시 연수구 능허대로 136"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        Google 지도에서 보기
+                    </a>
+                </div>
             </div>
         </div>
     );

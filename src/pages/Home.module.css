@@ -1,18 +1,30 @@
 /* ===== Home.module.css ===== */
-.slideshow{
+.hero{
   position:relative;
   width:min(1120px, 92vw);
-  height:clamp(240px, 45vw, 520px);
-  margin:28px auto;
-  border-radius:18px;
+  min-height:calc(100vh - var(--site-header-h) - 2rem);
+  margin:0 auto;
+  display:grid;
+  align-items:end;
+  padding:28px 0 56px;
+}
+
+.slideshow{
+  position:relative;
+  grid-area:1 / 1;
+  width:100%;
+  height:clamp(420px, 68vh, 680px);
+  margin:0;
+  border-radius:8px;
   overflow:hidden;
   box-shadow:0 16px 40px rgba(0,0,0,.28);
   background:#000; /* 로딩 전 배경 */
 }
 .slideshow::after{
-  /* 사진 위에 은은한 하단 그라데이션(자막/버튼 대비용, 필요시 삭제) */
   content:""; position:absolute; inset:0;
-  background:linear-gradient(180deg, transparent 60%, rgba(0,0,0,.28));
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.72) 0%, rgba(0,0,0,.36) 46%, rgba(0,0,0,.08) 100%),
+    linear-gradient(180deg, transparent 58%, rgba(0,0,0,.38));
   pointer-events:none;
 }
 
@@ -25,3 +37,96 @@
   display:block;
 }
 .active{ opacity:1; transform:none; }
+
+.copy{
+  grid-area:1 / 1;
+  position:relative;
+  z-index:1;
+  max-width:680px;
+  padding:clamp(24px, 5vw, 64px);
+  color:#fff;
+}
+
+.eyebrow{
+  margin:0 0 10px;
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:.18em;
+  color:rgba(255,255,255,.82);
+}
+
+.copy h1{
+  margin:0;
+  max-width:12em;
+  font-size:clamp(2.4rem, 6vw, 5rem);
+  line-height:1.05;
+  letter-spacing:0;
+  word-break:keep-all;
+  overflow-wrap:normal;
+}
+
+.lead{
+  max-width:56ch;
+  margin:18px 0 0;
+  color:rgba(255,255,255,.9);
+  font-size:1.04rem;
+  line-height:1.75;
+}
+
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:26px;
+}
+
+.primary,
+.secondary{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  padding:0 18px;
+  border-radius:8px;
+  font-weight:800;
+}
+
+.primary{
+  background:#fff;
+  color:#111;
+}
+
+.secondary{
+  border:1px solid rgba(255,255,255,.5);
+  background:rgba(0,0,0,.18);
+  color:#fff;
+}
+
+@media (max-width:720px){
+  .hero{
+    min-height:auto;
+    padding:16px 0 32px;
+  }
+
+  .slideshow{
+    height:560px;
+  }
+
+  .slideshow::after{
+    background:linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.72));
+  }
+
+  .copy{
+    align-self:end;
+    padding:22px;
+  }
+
+  .copy h1{
+    max-width:9em;
+    font-size:2.5rem;
+  }
+
+  .lead{
+    font-size:.96rem;
+  }
+}

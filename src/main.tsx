@@ -1,6 +1,5 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-// react-route-dom 을 설치후 import
 import {RouterProvider, createBrowserRouter} from 'react-router-dom'
 
 
@@ -27,7 +26,7 @@ const router=createBrowserRouter([
             {path:'/', element: <Home/>,},
             {path:'/intro', element:<Intro/>},
             {path:'/contact', element:<Contact/>},
-            {path:'/Vision',element:<Vision/>},
+            {path:'/vision',element:<Vision/>},
             {path:'/about',element:<About/>},
             {path:'/photos',element:<Photos/>},
             {path:'*',element:<NotFound/>},
@@ -37,7 +36,6 @@ const router=createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-        {/*route를 사용하기 위해 router를 설정해줌 기존에 있던 App컴포넌트는 router 내부로 이동*/}
         <RouterProvider router={router}/>
     </StrictMode>,
 )

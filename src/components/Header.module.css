@@ -1,8 +1,9 @@
 /* ===== Header.module.css ===== */
 .header{
   position:sticky; top:0; z-index:1000;
-  height:var(--site-header-h);
+  min-height:var(--site-header-h);
   display:flex; align-items:center; justify-content:space-between;
+  gap:18px;
   padding:0 28px;
 
   /* 밝은 글래스 헤더 */
@@ -15,8 +16,8 @@
 
 .logoArea img.logo{ height:48px; display:block; object-fit:contain; }
 
-.menuArea{ display:flex; align-items:center; gap:8px; }
-.navButtons{ display:flex; gap:4px; }
+.menuArea{ min-width:0; display:flex; align-items:center; gap:8px; }
+.navButtons{ display:flex; gap:4px; min-width:0; }
 
 /* 버튼형 내비게이션 */
 .navBtn{
@@ -24,6 +25,7 @@
   background:transparent; border:none; color:#6c757d;
   padding:10px 14px; border-radius:10px;
   font-size:.92rem; letter-spacing:.1px;
+  white-space:nowrap;
   transition:color .2s ease, background .2s ease, transform .2s ease;
 }
 .navBtn:hover{ color:#343a40; background:rgba(0,0,0,.04); }
@@ -48,7 +50,19 @@
 .login:hover, .join:hover, .logout:hover{ transform:translateY(-1px); }
 
 @media (max-width:768px){
-  .header{ padding:0 16px; }
+  .header{
+    align-items:flex-start;
+    height:auto;
+    padding:8px 12px;
+    gap:10px;
+  }
   .logoArea img.logo{ height:40px; }
+  .menuArea{
+    flex:1;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:4px;
+  }
+  .navButtons{ width:max-content; }
   .navBtn{ padding:8px 10px; font-size:.85rem; }
 }

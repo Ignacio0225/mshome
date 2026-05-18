@@ -59,6 +59,13 @@ const toc = [
     {id: "map", no: 4, title: "오시는 길"},
 ] as const;
 
+const departments = [
+    {name: "경영지원팀", desc: "회계 · 총무 · 운영 지원"},
+    {name: "영업팀", desc: "고객 상담 · 운임 · 파트너 관리"},
+    {name: "영업지원팀", desc: "서류 · 스케줄 · 고객 응대"},
+    {name: "선적관리팀", desc: "선적 진행 · 현장 관리"},
+];
+
 export default function Intro() {
     const [active, setActive] = useState<string>(toc[0].id);
 
@@ -159,23 +166,23 @@ export default function Intro() {
                     {/* 조직도 */}
                     <section id="org" className={styles.section}>
                         <h2>조직도</h2>
-                        <div className={styles.orgScroll}>
-                        <div className={`${styles.org} ${styles.orgCompact}`}>
-                            {/* 최상단: 대표이사 */}
-                            <div className={styles.ceo}>대표이사</div>
-
-                            {/* 가로로 넓은 레벨은 모바일에서 가로 스크롤 */}
-                            <div className={styles.orgScroll}>
-                                <ul className={styles.level}>
-                                    <li className={styles.nodeBlue}>경영지원팀</li>
-
-                                    {/* 영업팀 + 하위 2팀 */}
-                                    <li className={styles.nodeBlue}>영업팀</li>
-                                    <li className={styles.nodeBlue}>영업지원팀</li>
-                                    <li className={styles.nodeBlue}>선적관리팀</li>
-                                </ul>
+                        <div className={styles.orgCard}>
+                            <div className={styles.orgTop}>
+                                <span className={styles.orgLabel}>CEO</span>
+                                <strong>대표이사</strong>
+                                <p>전사 의사결정 및 글로벌 물류 네트워크 총괄</p>
                             </div>
-                        </div>
+
+                            <div className={styles.orgConnector} aria-hidden="true"/>
+
+                            <div className={styles.departmentGrid}>
+                                {departments.map((department) => (
+                                    <article className={styles.departmentCard} key={department.name}>
+                                        <span>{department.name}</span>
+                                        <p>{department.desc}</p>
+                                    </article>
+                                ))}
+                            </div>
                         </div>
                     </section>
 

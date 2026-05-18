@@ -83,6 +83,11 @@ export default function Photos() {
 
     return (
         <>
+            <header className={styles.header}>
+                <p className={styles.eyebrow}>FIELD PHOTOS</p>
+                <h1>현장 사진</h1>
+            </header>
+
             {/* 그리드(페이지네이션 적용) */}
             <ul className={styles.grid}>
                 {pageData.items.map((p, i) => {

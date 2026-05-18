@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
 import classes from "./Home.module.css";
 
 
@@ -11,11 +12,11 @@ import slide5 from '/public/mscntr2.jpeg';
 
 
 const images = [
-    {image: slide1, alt: 'slide1'},
-    {image: slide2, alt: 'slide2'},
-    {image: slide3, alt: 'slide1'},
-    {image: slide4, alt: 'slide1'},
-    {image: slide5, alt: 'slide1'},
+    {image: slide1, alt: '컨테이너 야적장'},
+    {image: slide2, alt: '선적 현장'},
+    {image: slide3, alt: '항만 작업 현장'},
+    {image: slide4, alt: '차량 물류 현장'},
+    {image: slide5, alt: '컨테이너 터미널'},
 ];
 
 
@@ -36,15 +37,30 @@ export default function Home() {
 
 
     return (
-        <div className={classes.slideshow}>
-            {images.map((image, index) => (
-                <img
-                    key={index}
-                    src={image.image}
-                    alt={image.alt}
-                    className={`${classes.slideImg} ${index === currentImageIndex ? classes.active : ''}`}
-                />
-            ))}
-        </div>
+        <section className={classes.hero} aria-label="명성해운 소개">
+            <div className={classes.slideshow}>
+                {images.map((image, index) => (
+                    <img
+                        key={image.alt}
+                        src={image.image}
+                        alt={image.alt}
+                        className={`${classes.slideImg} ${index === currentImageIndex ? classes.active : ''}`}
+                    />
+                ))}
+            </div>
+
+            <div className={classes.copy}>
+                <p className={classes.eyebrow}>MYUNG SUNG SHIPPING</p>
+                <h1>세계와 고객을 잇는 해상 물류 파트너</h1>
+                <p className={classes.lead}>
+                    Ro-Ro, 컨테이너, 프로젝트 카고, 항공 화물까지 명성해운은 현장 경험과 글로벌 네트워크로
+                    안전하고 예측 가능한 운송을 제공합니다.
+                </p>
+                <div className={classes.actions}>
+                    <Link to="/about" className={classes.primary}>사업분야 보기</Link>
+                    <Link to="/contact" className={classes.secondary}>문의하기</Link>
+                </div>
+            </div>
+        </section>
     )
 }

@@ -103,6 +103,120 @@
 .desc{ margin:0; color:#222; line-height:1.65; }
 
 /* ===== 조직도/지도 ===== */
+.orgCard{
+  position:relative;
+  margin:10px 0 28px;
+  padding:20px;
+  background:var(--card);
+  color:var(--ink);
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:0 10px 26px rgba(0,0,0,.06);
+}
+
+.orgTop{
+  width:min(280px, 100%);
+  margin:0 auto;
+  padding:18px 20px;
+  text-align:center;
+  border-radius:12px;
+  background:linear-gradient(135deg, #111, #2c3036);
+  color:#fff;
+  box-shadow:0 12px 24px rgba(0,0,0,.16);
+}
+
+.orgLabel{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:24px;
+  margin-bottom:8px;
+  padding:0 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.14);
+  color:rgba(255,255,255,.78);
+  font-size:.76rem;
+  font-weight:800;
+  letter-spacing:.12em;
+}
+
+.orgTop strong{
+  display:block;
+  font-size:1.25rem;
+}
+
+.orgTop p{
+  margin:8px auto 0;
+  max-width:24ch;
+  color:rgba(255,255,255,.78);
+  font-size:.9rem;
+  line-height:1.55;
+}
+
+.orgConnector{
+  width:2px;
+  height:28px;
+  margin:0 auto;
+  background:#111;
+  opacity:.8;
+}
+
+.departmentGrid{
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0, 1fr));
+  gap:12px;
+}
+
+.departmentGrid::before{
+  content:"";
+  position:absolute;
+  top:-14px;
+  left:calc(12.5% - 6px);
+  right:calc(12.5% - 6px);
+  height:2px;
+  background:#111;
+  opacity:.8;
+}
+
+.departmentCard{
+  position:relative;
+  min-height:112px;
+  padding:16px 14px;
+  display:grid;
+  align-content:start;
+  gap:8px;
+  border:1px solid #e6e8eb;
+  border-radius:12px;
+  background:#fff;
+  box-shadow:0 8px 18px rgba(0,0,0,.06);
+}
+
+.departmentCard::before{
+  content:"";
+  position:absolute;
+  top:-14px;
+  left:50%;
+  width:2px;
+  height:14px;
+  transform:translateX(-50%);
+  background:#111;
+  opacity:.8;
+}
+
+.departmentCard span{
+  font-weight:800;
+  color:#111;
+}
+
+.departmentCard p{
+  margin:0;
+  color:#5f6873;
+  font-size:.92rem;
+  line-height:1.55;
+  word-break:keep-all;
+}
+
 .figure{ margin:0; }
 .image{ width:100%; aspect-ratio:16/9; object-fit:contain; background:#fff; border-radius:12px; }
 .addressBlock{ background:#fff; color:var(--ink); border-radius:12px; padding:12px 14px; }
@@ -126,27 +240,28 @@
   .item{ grid-template-columns:64px minmax(0,1fr); }
   .yearBadge{ width:48px; height:48px; border-radius:12px; }
   .timeline::before{ left:26px; }
-  .level{ --cols: 1; }       /* 모바일은 1열 */
-}
-/* 기본은 4열 */
-.level{
-  --cols: 4;
-  display: grid;
-  grid-template-columns: repeat(var(--cols), minmax(140px, 1fr));
-  gap: 22px;
-  width: 100%;
-  min-width: 0;              /* ← 줄어들 수 있게 */
 }
 
-/* 작은 화면에서는 자동으로 열 수 줄이기 */
-@media (max-width: 1200px){
-  .level{ --cols: 2; }       /* 태블릿 정도면 2열 */
+@media (max-width: 900px){
+  .departmentGrid{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+  }
+
+  .departmentGrid::before{
+    display:none;
+  }
+
+  .departmentCard::before{
+    display:none;
+  }
 }
 
-/* org 전체를 스크롤 허용 컨테이너로 */
-.orgScroll{
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 6px;
+@media (max-width: 560px){
+  .orgCard{
+    padding:16px;
+  }
+
+  .departmentGrid{
+    grid-template-columns:1fr;
+  }
 }
-.orgScroll > .org{ min-width: 600px; } /* 너무 좁아지면 카드 찌그러지니 안전 폭 */
