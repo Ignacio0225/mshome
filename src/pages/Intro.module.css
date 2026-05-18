@@ -3,15 +3,15 @@
 /* 공통 래퍼: 양옆 여백 확보 + 중앙 고정 */
 .container{ padding:36px 0 48px; color:#fff; }
 .wrap{
-  width: min(1120px, calc(100% - 24px));
+  width: min(1440px, 100%);
   margin: 0 auto;
 }
 
 /* ===== 좌측 TOC + 우측 본문 2열 기본 ===== */
 .layout{
   display: grid;
-  grid-template-columns: 280px minmax(0, 1fr); /* ← 우측 칸이 반드시 줄어듦 */
-  gap: 20px;
+  grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+  gap: clamp(18px, 2.2vw, 28px);
   align-items: start;
 }
 
@@ -29,7 +29,7 @@
   display: grid; gap: 8px;
 }
 .tocLink{
-  display: grid; grid-template-columns: 32px 1fr; gap: 10px;
+  display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 10px;
   align-items: center; text-decoration: none;
   background: var(--card); color: var(--ink);
   border: 1px solid var(--line);
@@ -48,6 +48,9 @@
   background:#111; color:#fff; font-weight:700;
 }
 .tocText small{ display:block; color:var(--muted); margin-top:2px; }
+.tocText{ min-width:0; }
+.tocText strong,
+.tocText small{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 
 /* ===== 우측 본문 공통 ===== */
 .section{ scroll-margin-top: calc(var(--site-header-h, 56px) + 16px); min-width:0; }
@@ -64,7 +67,7 @@
   margin: 0 auto; text-align: left;
   background: var(--card); color: var(--ink);
   border: 1px solid var(--line); border-radius: 12px;
-  padding: 14px 16px; box-shadow: 0 10px 26px rgba(0,0,0,.06);
+  padding: clamp(14px, 2vw, 22px); box-shadow: 0 10px 26px rgba(0,0,0,.06);
 
   /* 오버플로 방지 3종 세트 */
   min-width: 0;
@@ -228,18 +231,31 @@
   .layout{ grid-template-columns: 1fr; }
   .toc{ position: static; order: -1; }
   .tocList{
-    grid-auto-flow: column;
-    grid-auto-columns: max-content;
+    display:flex;
     overflow-x: auto;
     padding-bottom: 4px;
   }
+  .tocList li{ flex:0 0 min(220px, 70vw); }
   .tocLink{ white-space: nowrap; }
 }
 
+@media (max-width: 720px){
+  .container{ padding:20px 0 36px; }
+  .layout{
+    width:calc(100vw - 24px);
+    max-width:calc(100vw - 24px);
+    margin-inline:auto;
+  }
+  .section h2{ font-size:1.55rem; }
+  .tocList{ gap:6px; }
+  .tocLink{ padding:7px 9px; }
+}
+
 @media (max-width: 640px){
-  .item{ grid-template-columns:64px minmax(0,1fr); }
+  .timeline::before{ display:none; }
+  .item{ grid-template-columns:1fr; gap:8px; padding:10px 0; }
   .yearBadge{ width:48px; height:48px; border-radius:12px; }
-  .timeline::before{ left:26px; }
+  .yearBadge::after{ display:none; }
 }
 
 @media (max-width: 900px){
@@ -258,7 +274,7 @@
 
 @media (max-width: 560px){
   .orgCard{
-    padding:16px;
+    padding:14px;
   }
 
   .departmentGrid{

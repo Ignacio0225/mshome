@@ -1,7 +1,7 @@
 /* ===== Vision.module.css (polish) ===== */
 :root{ --site-header-h: 64px; }
 .container{ padding:40px 0 56px; color:#fff; }
-.wrap{ width:min(1120px, 92vw); margin:0 auto; display:grid; gap:28px; }
+.wrap{ width:min(1440px, 100%); margin:0 auto; display:grid; gap:28px; }
 
 .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
 @media (max-width:900px){ .grid2{ grid-template-columns:1fr; } }
@@ -33,3 +33,15 @@
 .list{ margin:0 0 0 18px; }
 .list li{ margin:6px 0; color:#1f242a; }
 .list li::marker{ color:var(--accent); }
+
+@media (max-width:720px){
+  .container{ padding:20px 0 36px; }
+  .wrap{
+    width:calc(100vw - 24px);
+    max-width:calc(100vw - 24px);
+    gap:16px;
+  }
+  .card{ padding:16px; border-radius:12px; }
+  .sectionTitle{ font-size:1.15rem; }
+  .text, .list li{ font-size:.94rem; line-height:1.65; }
+}

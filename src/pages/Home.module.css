@@ -1,7 +1,7 @@
 /* ===== Home.module.css ===== */
 .hero{
   position:relative;
-  width:min(1120px, 92vw);
+  width:min(1440px, 100%);
   min-height:calc(100vh - var(--site-header-h) - 2rem);
   margin:0 auto;
   display:grid;
@@ -13,7 +13,7 @@
   position:relative;
   grid-area:1 / 1;
   width:100%;
-  height:clamp(420px, 68vh, 680px);
+  height:clamp(520px, 70vh, 780px);
   margin:0;
   border-radius:8px;
   overflow:hidden;
@@ -42,8 +42,8 @@
   grid-area:1 / 1;
   position:relative;
   z-index:1;
-  max-width:680px;
-  padding:clamp(24px, 5vw, 64px);
+  max-width:760px;
+  padding:clamp(28px, 5vw, 76px);
   color:#fff;
 }
 
@@ -58,7 +58,7 @@
 .copy h1{
   margin:0;
   max-width:12em;
-  font-size:clamp(2.4rem, 6vw, 5rem);
+  font-size:clamp(3rem, 5.4vw, 5.4rem);
   line-height:1.05;
   letter-spacing:0;
   word-break:keep-all;
@@ -71,6 +71,7 @@
   color:rgba(255,255,255,.9);
   font-size:1.04rem;
   line-height:1.75;
+  overflow-wrap:anywhere;
 }
 
 .actions{
@@ -105,11 +106,14 @@
 @media (max-width:720px){
   .hero{
     min-height:auto;
-    padding:16px 0 32px;
+    width:calc(100vw - 24px);
+    max-width:calc(100vw - 24px);
+    padding:8px 0 28px;
   }
 
   .slideshow{
-    height:560px;
+    height:min(620px, calc(100vh - var(--site-header-h) - 32px));
+    min-height:520px;
   }
 
   .slideshow::after{
@@ -118,15 +122,43 @@
 
   .copy{
     align-self:end;
-    padding:22px;
+    padding:20px;
   }
 
   .copy h1{
-    max-width:9em;
-    font-size:2.5rem;
+    max-width:8.6em;
+    font-size:clamp(2.18rem, 10vw, 2.65rem);
   }
 
   .lead{
-    font-size:.96rem;
+    font-size:.94rem;
+    line-height:1.65;
+    max-width:100%;
+  }
+
+  .actions{
+    gap:8px;
+    margin-top:20px;
+  }
+
+  .primary,
+  .secondary{
+    min-height:42px;
+    padding:0 14px;
+    font-size:.92rem;
+  }
+}
+
+@media (max-width:390px){
+  .slideshow{
+    min-height:500px;
+  }
+
+  .copy{
+    padding:18px;
+  }
+
+  .copy h1{
+    font-size:2.1rem;
   }
 }

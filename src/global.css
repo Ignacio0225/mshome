@@ -12,13 +12,13 @@
 
     /* layout */
     --gutter: clamp(12px, 2vw, 20px); /* 좌우 기본 패딩 */
-    --container-max: 1320px; /* 메인 컨테이너 최대폭 */
-    --page-pad: clamp(16px, 3vw, 32px);
+    --container-max: 1440px; /* 21~27인치 데스크탑 기준 메인 컨테이너 */
+    --page-pad: clamp(16px, 3vw, 48px);
 
 
     /* 전역 읽기 폭 캡 (큰 화면에서 자동으로 줄이기) */
-    --content-max: 68rem; /* 섹션 최대폭(~1088px) */
-    --card-max: 62rem; /* 카드/패널 최대폭(~992px) */
+    --content-max: 76rem; /* 섹션 최대폭(~1216px) */
+    --card-max: 70rem; /* 카드/패널 최대폭(~1120px) */
     --measure: 72ch; /* 문단 줄길이(가독 최적) */
 
     --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
@@ -119,6 +119,30 @@ main {
     padding-inline: var(--page-pad); /* 좌우 패딩 */
     min-height: calc(100vh - var(--site-header-h));
     padding-top: 1rem;
+}
+
+@media (min-width: 1800px) {
+    :root {
+        --container-max: 1560px;
+        --content-max: 84rem;
+        --card-max: 76rem;
+    }
+}
+
+@media (max-width: 720px) {
+    :root {
+        --site-header-h: 104px;
+        --page-pad: 12px;
+    }
+
+    body {
+        background-attachment: scroll;
+    }
+
+    main {
+        padding-inline: 0;
+        padding-top: .75rem;
+    }
 }
 
 /* 중앙 정렬이 ‘필요한 섹션만’ 선택적으로 사용 */

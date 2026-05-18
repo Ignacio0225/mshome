@@ -1,6 +1,6 @@
 /* ===== Photos.module.css ===== */
 .header{
-  width:min(1120px, 92vw);
+  width:min(1440px, 100%);
   margin:28px auto 0;
   color:#fff;
 }
@@ -20,10 +20,10 @@
 
 /* 썸네일 그리드 */
 .grid{
-  width:min(1120px, 92vw);
+  width:min(1440px, 100%);
   margin:18px auto 28px;
   display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns:repeat(auto-fill, minmax(190px, 1fr));
   gap:14px;
 }
 .item{ border-radius:14px; overflow:hidden; box-shadow:0 8px 22px rgba(0,0,0,.16); }
@@ -43,7 +43,7 @@
 .dialog{
   position:relative;
   width:min(92vw, 1080px);
-  height:min(80vh, 92vw * .6);
+  height:min(80vh, 64vw);
   background:#000; border-radius:14px; overflow:hidden;
   box-shadow:0 24px 64px rgba(0,0,0,.45);
 }
@@ -97,3 +97,42 @@
 }
 
 /* 사용 중이면 유지, 아니면 기존 .caption 관련 규칙은 삭제 가능 */
+
+@media (min-width:1800px){
+  .grid{ grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); }
+  .img{ height:210px; }
+  .dialog{ width:min(86vw, 1320px); }
+}
+
+@media (max-width:720px){
+  .header{
+    width:calc(100vw - 24px);
+    max-width:calc(100vw - 24px);
+    margin-top:20px;
+  }
+  .header h1{ font-size:1.55rem; }
+  .grid{
+    width:calc(100vw - 24px);
+    max-width:calc(100vw - 24px);
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:10px;
+    margin-top:14px;
+  }
+  .item{ border-radius:10px; }
+  .img{ height:38vw; min-height:136px; }
+  .dialog{
+    width:100vw;
+    height:100dvh;
+    border-radius:0;
+  }
+  .closeBtn{ top:12px; right:12px; }
+  .navBtn{ width:40px; height:58px; }
+  .prev{ left:0; }
+  .next{ right:0; }
+}
+
+@media (max-width:390px){
+  .grid{ gap:8px; }
+  .img{ min-height:124px; }
+  .meta{ padding:10px 12px 12px; }
+}

@@ -1,5 +1,5 @@
 /* ===== Contact.module.css ===== */
-.container{ width:min(900px, 92vw); margin:36px auto 48px; color:#fff; }
+.container{ width:min(1040px, 100%); margin:36px auto 48px; color:#fff; }
 
 .header{
   margin-bottom:18px;
@@ -94,13 +94,25 @@
 }
 
 @media (max-width:720px){
+  .container{
+    width:calc(100vw - 24px);
+    max-width:calc(100vw - 24px);
+    margin:20px auto 36px;
+  }
+  .header h1{ font-size:1.55rem; }
+  .header p{ font-size:.94rem; }
+  .address{ padding:14px; border-radius:12px; }
   .contactGrid{
     grid-template-columns:1fr;
   }
 
   .mapPanel{
+    min-height:240px;
     align-items:flex-start;
     flex-direction:column;
     justify-content:flex-end;
+    padding:14px;
   }
+
+  .mapPanel a{ width:100%; text-align:center; }
 }

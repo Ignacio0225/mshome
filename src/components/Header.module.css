@@ -4,7 +4,7 @@
   min-height:var(--site-header-h);
   display:flex; align-items:center; justify-content:space-between;
   gap:18px;
-  padding:0 28px;
+  padding:0 clamp(20px, 4vw, 64px);
 
   /* 밝은 글래스 헤더 */
   background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.82));
@@ -14,6 +14,7 @@
   color:#2c3e50;
 }
 
+.logoArea{ flex:0 0 auto; }
 .logoArea img.logo{ height:48px; display:block; object-fit:contain; }
 
 .menuArea{ min-width:0; display:flex; align-items:center; gap:8px; }
@@ -51,18 +52,25 @@
 
 @media (max-width:768px){
   .header{
-    align-items:flex-start;
+    align-items:stretch;
+    flex-direction:column;
     height:auto;
-    padding:8px 12px;
-    gap:10px;
+    padding:8px 12px 6px;
+    gap:6px;
   }
-  .logoArea img.logo{ height:40px; }
+  .logoArea img.logo{ height:38px; }
   .menuArea{
-    flex:1;
+    width:100%;
     overflow-x:auto;
     -webkit-overflow-scrolling:touch;
     padding-bottom:4px;
   }
-  .navButtons{ width:max-content; }
-  .navBtn{ padding:8px 10px; font-size:.85rem; }
+  .navButtons{ width:max-content; min-width:100%; }
+  .navBtn{ flex:0 0 auto; padding:8px 10px; font-size:.84rem; }
+}
+
+@media (max-width:390px){
+  .header{ padding-inline:10px; }
+  .logoArea img.logo{ height:34px; }
+  .navBtn{ padding:7px 8px; font-size:.8rem; }
 }

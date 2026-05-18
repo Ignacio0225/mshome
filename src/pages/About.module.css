@@ -5,13 +5,14 @@
 .hero h1{ display:inline-block; background:#fff; color:var(--ink); font-size:2rem; padding:.6rem 1rem; border-radius:12px; opacity:.95; }
 .hero p{ max-width:72ch; margin:8px auto 0; background:#fff; color:var(--ink); padding:.9rem 1rem; border-radius:10px; opacity:.95; }
 
-.layout{ width:min(1120px, 92vw); margin:16px auto 0; display:grid; grid-template-columns:280px 1fr; gap:20px; }
+.layout{ width:min(1440px, 100%); margin:16px auto 0; display:grid; grid-template-columns:minmax(240px, 300px) minmax(0, 1fr); gap:clamp(18px, 2.2vw, 28px); }
+.layout > *{ min-width:0; }
 
 /* 목차 */
 .toc{ position:sticky; top:calc(var(--site-header-h) + 12px); align-self:start; }
 .tocList{ list-style:none; margin:0; padding:0; display:grid; gap:8px; }
 .tocLink{
-  display:grid; grid-template-columns:32px 1fr; gap:10px; align-items:center;
+  display:grid; grid-template-columns:32px minmax(0, 1fr); gap:10px; align-items:center;
   text-decoration:none; background:var(--card); color:var(--ink);
   border:1px solid var(--line); padding:8px 10px; border-radius:12px;
   transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
@@ -19,22 +20,53 @@
 .tocLink:hover{ transform:translateY(-1px); box-shadow:0 8px 22px rgba(0,0,0,.08); background:#fff; }
 .badge{ width:28px; height:28px; border-radius:8px; display:grid; place-items:center; background:#111; color:#fff; font-weight:700; }
 .tocText small{ display:block; color:var(--muted); margin-top:2px; }
+.tocText{ min-width:0; }
+.tocText strong,
+.tocText small{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 
 /* 본문 */
+.content{ min-width:0; }
 .section{ scroll-margin-top: calc(var(--site-header-h) + 16px); margin-bottom:24px; }
 .sectionHeader{ margin-bottom:10px; }
 .sectionHeader h2{ font-size:1.6rem; margin:0; padding-left:10px; border-left:4px solid var(--accent); }
 .sectionSubtitle{ margin:6px 0 0 10px; color:#e6e6e6; }
-.card{ background:var(--card); color:var(--ink); border:1px solid var(--line); border-radius:14px; padding:16px 18px; box-shadow:0 10px 26px rgba(0,0,0,.06); }
+.card{ max-width:100%; background:var(--card); color:var(--ink); border:1px solid var(--line); border-radius:14px; padding:clamp(16px, 2vw, 24px); box-shadow:0 10px 26px rgba(0,0,0,.06); overflow-wrap:anywhere; }
 .subTitle{ font-size:1.05rem; margin:12px 0 6px; }
+.card p{ max-width:100%; overflow-wrap:anywhere; }
 .list{ margin:8px 0 12px 18px; }
-.list li{ margin:4px 0; }
+.list li{ margin:4px 0; overflow-wrap:anywhere; word-break:keep-all; }
 .chips{ display:flex; gap:8px; flex-wrap:wrap; margin:8px 0 0; padding:0; list-style:none; }
 .chips li{ background:#f5f6f7; border:1px solid #e6e6e6; padding:6px 10px; border-radius:999px; font-size:.9rem; }
 
 @media (max-width:960px){
   .layout{ grid-template-columns:1fr; }
   .toc{ position:static; order:-1; }
-  .tocList{ grid-auto-flow:column; grid-auto-columns:max-content; overflow-x:auto; padding-bottom:4px; }
+  .tocList{ display:flex; overflow-x:auto; padding-bottom:4px; }
+  .tocList li{ flex:0 0 min(260px, 78vw); }
   .tocLink{ white-space:nowrap; }
+}
+
+@media (max-width:720px){
+  .container{ padding:20px 0 36px; }
+  .layout{
+    width:calc(100vw - 24px);
+    max-width:calc(100vw - 24px);
+  }
+  .hero{ margin-bottom:16px; }
+  .hero h1{ font-size:1.55rem; border-radius:10px; }
+  .sectionHeader h2{ font-size:1.34rem; }
+  .sectionSubtitle{ font-size:.94rem; }
+  .tocList{ gap:6px; }
+  .tocLink{ padding:7px 9px; }
+  .card{ border-radius:12px; }
+  .card p,
+  .list li{
+    word-break:normal;
+    overflow-wrap:anywhere;
+  }
+  .list{ margin-left:16px; }
+}
+
+@media (max-width:390px){
+  .chips li{ font-size:.82rem; padding:5px 8px; }
 }
