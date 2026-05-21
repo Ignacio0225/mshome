@@ -15,12 +15,19 @@ export function useBoardPosts(pageSize: number) {
   const [pageData, setPageData] = useState<PageData<PostListItem>>({ ...EMPTY_PAGE, size: pageSize });
   const [page, setPage] = useState(1);
 
-  async function loadPosts(nextPage: number, keyword: string, category: PostCategory) {
-    const data = await boardApi.listPosts({ page: nextPage, size: pageSize, q: keyword, category });
-    setPageData(data);
-    setPage(data.page);
-    return data;
+  function resetPosts() {
+    setPageData({ ...EMPTY_PAGE, size: pageSize });
+    setPage(1);
   }
 
-  return { page, pageData, setPage, setPageData, loadPosts };
+  async function loadPosts(nextPage: number, keyword: string, category: PostCategory) {
+    const data = await boardApi.listPosts({ page: nextPage, size: pageSize, q: keyword, category });
+    const filteredItems = data.items.filter((post) => post.category === category);
+    const safeData = filteredItems.length === data.items.length ? data : { ...data, items: filteredItems, total: filteredItems.length };
+    setPageData(safeData);
+    setPage(safeData.page);
+    return safeData;
+  }
+
+  return { page, pageData, setPage, setPageData, resetPosts, loadPosts };
 }

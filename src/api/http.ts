@@ -8,6 +8,29 @@ type RequestOptions = {
   auth?: boolean;
 };
 
+function getErrorMessage(payload: unknown, fallback: string) {
+  if (!payload || typeof payload !== "object") return fallback;
+  if (!("detail" in payload)) return fallback;
+
+  const detail = (payload as { detail?: unknown }).detail;
+  if (typeof detail === "string") return detail;
+  if (Array.isArray(detail)) {
+    return detail
+      .map((item) => {
+        if (!item || typeof item !== "object") return String(item);
+        const message = "msg" in item ? String((item as { msg?: unknown }).msg) : "";
+        const location = "loc" in item && Array.isArray((item as { loc?: unknown }).loc)
+          ? (item as { loc: unknown[] }).loc.join(".")
+          : "";
+        return [location, message].filter(Boolean).join(": ");
+      })
+      .filter(Boolean)
+      .join(" / ") || fallback;
+  }
+  if (detail && typeof detail === "object") return JSON.stringify(detail);
+  return fallback;
+}
+
 export async function request<T>(path: string, options: RequestOptions = {}): Promise<T> {
   const headers = new Headers();
 
@@ -38,12 +61,12 @@ export async function request<T>(path: string, options: RequestOptions = {}): Pr
 
   if (response.status === 401 || response.status === 403) {
     const errorPayload = await response.json().catch(() => ({}));
-    throw new Error(errorPayload.detail ?? "로그인이 필요하거나 권한이 없습니다.");
+    throw new Error(getErrorMessage(errorPayload, "로그인이 필요하거나 권한이 없습니다."));
   }
 
   if (!response.ok) {
     const errorPayload = await response.json().catch(() => ({}));
-    throw new Error(errorPayload.detail ?? "요청 처리 중 오류가 발생했습니다.");
+    throw new Error(getErrorMessage(errorPayload, "요청 처리 중 오류가 발생했습니다."));
   }
 
   if (response.status === 204) return undefined as T;

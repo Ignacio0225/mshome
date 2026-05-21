@@ -12,7 +12,7 @@ const sections: Section[] = [
     {id: "container", title: "CONTAINER", subtitle: "FCL/LCL 글로벌 컨테이너 운송"},
     {id: "air", title: "AIR CARGO SERVICE", subtitle: "긴급/고부가가치 항공 운송"},
     {id: "agency", title: "SHIPPING AGENCY", subtitle: "선박 대리점/항만 오퍼레이션"},
-    {id: "trade", title: "INTERNATIONAL TRADE", subtitle: "해외조달·수출입 트레이딩"},
+    {id: "trade", title: "INTERNATIONAL TRADE", subtitle: "해외조달·수출.입 트레이딩"},
 ];
 
 export default function About() {
@@ -94,7 +94,7 @@ export default function About() {
                                 <li>(주)명성해운은 일반 화물(General Cargo)부터 대형·특수화물(Project Cargo)까지 폭넓은 운송 경험을 보유하고 있습니다.</li>
                                 <li> 건설 장비,중장비, 플랜트 기자재, 산업 설비 등 규격·중량 제한이 있는 화물도 안전하게 운송할 수 있는 노하우를 갖추고 있습니다.
                                 </li>
-                                <li>화물의 규격, 중량, 목적지를 고려해 Ro-Ro, 벌크선, 컨테이너선, 플랫랙 등 다양한 운송 방식을 조합합니다.</li>
+                                <li>화물의 규격, 중량, 목적지를 고려해 Ro-Ro, 벌크선, 컨테이너선, 플랫랙 등 다양한 운송 방식을 조합 합니다.</li>
                                 <li>전용 하역 장비, 래싱(Lashing), 국제 안전 규정(IMO)을 기준으로 프로젝트별 위험을 최소화합니다.</li>
                             </ul>
 
@@ -185,7 +185,7 @@ export default function About() {
                     <section id="trade" className={styles.section} aria-labelledby="trade-title">
                         <header className={styles.sectionHeader}>
                             <h2 id="trade-title">INTERNATIONAL TRADE</h2>
-                            <p className={styles.sectionSubtitle}>해외 조달·수출입 트레이딩</p>
+                            <p className={styles.sectionSubtitle}>해외 조달·수출.입 트레이딩</p>
                         </header>
 
                         <div className={styles.card}>
@@ -197,9 +197,9 @@ export default function About() {
                                 <li>25년 노하우 기반의 무역 서비스<br/>
                                     (주)명성해운은 2004년 설립 이후 중동·아프리카·중앙아시아·남미 등 전 세계 다양한 시장과의 무역 경험을 쌓아왔습니다.<br/>
                                     신차/중고차, 기계 설비, 화학 제품,
-                                    생활용품 등 다양한 품목의 수출입을 전문적으로 지원하며 글로벌 비즈니스 파트너로서 고객의 경쟁력을 강화합니다.
+                                    생활용품 등 다양한 품목의 수출.입을 전문적으로 지원하며 글로벌 비즈니스 파트너로서 고객의 경쟁력을 강화합니다.
                                 </li>
-                                <li>수출입 원스톱 서비스<br/>
+                                <li>수출.입 원스톱 서비스<br/>
                                     무역 계약부터 선적, 통관, 현지 인도까지 전 과정을 통합 지원하고, 국가별 수입 규제와 통관 조건에 맞춘 솔루션을 제공합니다.
                                 </li>
                                 <li>맞춤형 무역 컨설팅 서비스<br/>

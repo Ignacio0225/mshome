@@ -45,6 +45,7 @@ export default function PostDetail({
       <div className={styles.detailHeader}>
         <div>
           <h2>
+            {post.category === "notice" && <span className={styles.noticeBadge}>NOTICE</span>}
             {post.is_secret && <span className={styles.secretBadge}>비밀</span>}
             {post.title}
           </h2>

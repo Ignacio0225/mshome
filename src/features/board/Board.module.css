@@ -136,6 +136,20 @@
   background: #f7f7f7;
 }
 
+.boardTable .noticeRow {
+  background: #f7f7f7;
+}
+
+.boardTable .noticeRow td {
+  border-bottom: 1px solid #d2d2d2;
+  color: #222;
+  font-weight: 900;
+}
+
+.boardTable .noticeRow:hover {
+  background: #f2f2f2;
+}
+
 .selectedRow {
   background: #f4f4f4;
 }
@@ -182,6 +196,36 @@
   color: #777;
   font-style: normal;
   font-size: .86rem;
+}
+
+.noticeFixedBadge,
+.noticeBadge {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-weight: 950;
+  letter-spacing: 0;
+}
+
+.noticeFixedBadge {
+  min-width: 46px;
+  min-height: 25px;
+  border: 1px solid #111;
+  background: #111;
+  color: #fff;
+  font-size: .78rem;
+}
+
+.noticeBadge {
+  min-width: 62px;
+  min-height: 24px;
+  padding: 2px 8px;
+  border: 1px solid #222;
+  background: #fff;
+  color: #111;
+  font-size: .72rem;
 }
 
 .secretBadge {

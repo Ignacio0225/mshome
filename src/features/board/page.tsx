@@ -30,7 +30,7 @@ export default function Board() {
   // Board 페이지는 "상태와 API 연결"만 담당하고, 실제 UI 조각은 components/board/*가 담당합니다.
   const [user, setUser] = useState<User | null>(() => getStoredUser());
   const [activeBoard, setActiveBoard] = useState<BoardSection>("qna");
-  const { page, pageData, loadPosts } = useBoardPosts(PAGE_SIZE);
+  const { page, pageData, resetPosts, loadPosts } = useBoardPosts(PAGE_SIZE);
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
   const [mode, setMode] = useState<BoardMode>("list");
   const [keyword, setKeyword] = useState("");
@@ -93,6 +93,7 @@ export default function Board() {
         .catch((loadError) => setError(loadError instanceof Error ? loadError.message : "게시글을 불러오지 못했습니다."))
         .finally(() => setIsLoading(false));
     } else {
+      resetPosts();
       loadPosts(1, "", currentCategory)
         .catch((loadError) => setError(loadError instanceof Error ? loadError.message : "게시글을 불러오지 못했습니다."))
         .finally(() => setIsLoading(false));
@@ -251,6 +252,7 @@ export default function Board() {
       setMode("list");
       setSelectedPost(null);
       setKeyword("");
+      resetPosts();
       setIsLoading(true);
       try {
         await loadPosts(1, "", nextBoard === "notice" ? "notice" : "qna");

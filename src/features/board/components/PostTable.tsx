@@ -57,14 +57,20 @@ export default function PostTable({
           )}
           {pageData.items.map((post, index) => {
             const rowNo = pageData.total - (pageData.page - 1) * pageData.size - index;
+            const isNotice = board === "notice";
             return (
-              <tr key={post.id}>
-                <td className={styles.noCol}>{rowNo}</td>
+              <tr key={post.id} className={isNotice ? styles.noticeRow : undefined}>
+                <td className={styles.noCol}>
+                  {isNotice ? <span className={styles.noticeFixedBadge}>고정</span> : rowNo}
+                </td>
                 <td>
                   <button className={styles.titleButton} onClick={() => onOpenPost(post.id)}>
+                    {isNotice && <strong className={styles.noticeBadge}>NOTICE</strong>}
                     {post.is_secret && <strong className={styles.secretBadge}>비밀</strong>}
-                    <span>{post.title}</span>
-                    {post.comment_count > 0 && <em>{post.comment_count}</em>}
+                    <span>
+                      {post.title}
+                      {post.comment_count > 0 && <em>({post.comment_count})</em>}
+                    </span>
                   </button>
                 </td>
                 <td className={styles.authorCol}>{post.author.real_name}</td>
