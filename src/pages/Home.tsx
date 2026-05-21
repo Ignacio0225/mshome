@@ -37,7 +37,7 @@ export default function Home() {
 
 
     return (
-        <section className={classes.hero} aria-label="명성해운 소개">
+        <section className={classes.hero} aria-label="(주)명성해운 소개">
             <div className={classes.slideshow}>
                 {images.map((image, index) => (
                     <img
@@ -50,10 +50,10 @@ export default function Home() {
             </div>
 
             <div className={classes.copy}>
-                <p className={classes.eyebrow}>MYUNG SUNG SHIPPING</p>
+                <p className={classes.eyebrow}>MS SHIPPING</p>
                 <h1>세계와 고객을 잇는 해상 물류 파트너</h1>
                 <p className={classes.lead}>
-                    Ro-Ro, 컨테이너, 프로젝트 카고, 항공 화물까지 명성해운은 현장 경험과 글로벌 네트워크로
+                    (주)명성해운은 Ro-Ro, 컨테이너, 프로젝트 카고, 항공 화물까지 풍부한 현장 경험과<br/> 다양한 글로벌 네트워크로
                     안전하고 예측 가능한 운송을 제공합니다.
                 </p>
                 <div className={classes.actions}>

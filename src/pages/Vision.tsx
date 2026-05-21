@@ -10,7 +10,7 @@ export default function Vision() {
         {/*  <h1>OUR VISION | 비전</h1>*/}
         {/*  <p className={styles.tagline}>“세계와 고객을 잇는 글로벌 해상 물류 리더”</p>*/}
         {/*  <p className={styles.lead}>*/}
-        {/*    명성해운은 2004년 설립 이후, 중고차 Ro-Ro 운송을 중심으로*/}
+        {/*    (주)명성해운은 2004년 설립 이후, 중고차 Ro-Ro 운송을 중심으로*/}
         {/*    중동, 아프리카, 중앙아시아, 남미 등 글로벌 시장에서 신뢰를 쌓아왔습니다.*/}
         {/*    앞으로도 변화하는 글로벌 해상 물류 환경 속에서 지속 가능한 성장을 추구하며,*/}
         {/*    고객에게 가장 신뢰받는 파트너로 자리매김하는 것이 우리의 목표입니다.*/}
@@ -22,10 +22,10 @@ export default function Vision() {
           <div className={styles.card}>
             <h2 className={styles.sectionTitle}>OUR VISION | 비전</h2>
             <p className={styles.text}>
-              “세계와 고객을 잇는 글로벌 해상 물류 리더”<br/>
-                명성해운은 2004년 설립 이후, 중고차 Ro-Ro 운송을 중심으로
-            중동, 아프리카, 중앙아시아, 남미 등 글로벌 시장에서 신뢰를 쌓아왔습니다.
-            앞으로도 변화하는 글로벌 해상 물류 환경 속에서 지속 가능한 성장을 추구하며,
+              <p className={styles.main}>“세계와 고객을 잇는 글로벌 해상 물류 리더”</p>
+                (주)명성해운은 2004년 설립 이후, 중고차 Ro-Ro 운송을 중심으로
+            중동, 아프리카, 중앙아시아, 남미 등<br/> 글로벌 시장에서 신뢰를 쌓아왔습니다.
+            앞으로도 변화하는 글로벌 해상 물류 환경 속에서 지속 가능한 성장을<br/> 추구하며,
             고객에게 가장 신뢰받는 파트너로 자리매김하는 것이 우리의 목표입니다.
             </p>
           </div>
@@ -33,9 +33,9 @@ export default function Vision() {
           <div className={styles.card}>
             <h2 className={styles.sectionTitle}>OUR MISSION | 사명</h2>
             <p className={styles.text}>
-              “안전·신속·신뢰 기반의 해상 운송 서비스로 고객의 가치를 세계와 연결합니다.”
-              명성해운은 고객의 비즈니스 성공을 최우선으로 생각하며,
-              차량 한 대, 화물 한 건마다 정확하고 투명한 운송을 약속합니다.
+              <p className={styles.main}>“안전·신속·신뢰 기반의 해상 운송 서비스”</p>
+              (주)명성해운은 고객의 비즈니스 성공을 최우선으로 생각하며,
+              차량 한 대, 화물 한 건마다 정확하고<br/> 투명한 운송을 약속하며 고객의 가치를 세계와 연결합니다.
             </p>
           </div>
         </section>
@@ -83,6 +83,8 @@ export default function Vision() {
               <h3 className={styles.subTitle}>지속 가능 경영 (Sustainability)</h3>
               <ul className={styles.list}>
                 <li>친환경 선박/운송 방안 도입으로 ESG 경영 실현</li>
+                  <li>디지털 운송 관리 시스텝 도입으로 자원 낭비 최소화 및 운영 효율 향상</li>
+                  <li>안정적인 선적 관리와 정확한 커뮤니케이션을 기반으로 지속 가능한 파트너십 구축</li>
               </ul>
             </article>
           </div>

@@ -1,0 +1,53 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, .45);
+}
+
+.modal {
+  width: min(420px, 100%);
+  padding: 22px;
+  border-radius: 10px;
+  background: #fff;
+  color: #111;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .28);
+}
+
+.modal h2 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+}
+
+.modal p {
+  margin: 0;
+  color: #555;
+  font-weight: 750;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.actions button {
+  min-height: 40px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 900;
+}
+
+.secondary {
+  background: #f1f3f5;
+  color: #333;
+}
+
+.primary {
+  background: #111;
+  color: #fff;
+}

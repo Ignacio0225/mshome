@@ -23,9 +23,9 @@
 /* 버튼형 내비게이션 */
 .navBtn{
   position:relative;
-  background:transparent; border:none; color:#6c757d;
+  background:transparent; border:none; color: #000000;
   padding:10px 14px; border-radius:10px;
-  font-size:.92rem; letter-spacing:.1px;
+  font-size:.99rem; letter-spacing:.1px;
   white-space:nowrap;
   transition:color .2s ease, background .2s ease, transform .2s ease;
 }
@@ -49,6 +49,7 @@
 .logout{ background:linear-gradient(135deg,#6c757d,#495057); color:#fff; border:none; }
 
 .login:hover, .join:hover, .logout:hover{ transform:translateY(-1px); }
+.activeAuth{ outline:2px solid rgba(0,0,0,.18); }
 
 @media (max-width:768px){
   .header{

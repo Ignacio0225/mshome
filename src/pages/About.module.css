@@ -13,6 +13,10 @@
 .tocList{ list-style:none; margin:0; padding:0; display:grid; gap:8px; }
 .tocLink{
   display:grid; grid-template-columns:32px minmax(0, 1fr); gap:10px; align-items:center;
+  width:100%;
+  font:inherit;
+  text-align:left;
+  cursor:pointer;
   text-decoration:none; background:var(--card); color:var(--ink);
   border:1px solid var(--line); padding:8px 10px; border-radius:12px;
   transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
@@ -30,7 +34,7 @@
 .sectionHeader{ margin-bottom:10px; }
 .sectionHeader h2{ font-size:1.6rem; margin:0; padding-left:10px; border-left:4px solid var(--accent); }
 .sectionSubtitle{ margin:6px 0 0 10px; color:#e6e6e6; }
-.card{ max-width:100%; background:var(--card); color:var(--ink); border:1px solid var(--line); border-radius:14px; padding:clamp(16px, 2vw, 24px); box-shadow:0 10px 26px rgba(0,0,0,.06); overflow-wrap:anywhere; }
+.card{ max-width:100%; background:var(--card); color:var(--ink); border:1px solid var(--line); border-radius:14px; padding:clamp(16px, 2vw, 24px); padding-right: 80px; box-shadow:0 10px 26px rgba(0,0,0,.06); overflow-wrap:anywhere; }
 .subTitle{ font-size:1.05rem; margin:12px 0 6px; }
 .card p{ max-width:100%; overflow-wrap:anywhere; }
 .list{ margin:8px 0 12px 18px; }

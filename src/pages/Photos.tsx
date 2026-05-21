@@ -1,7 +1,7 @@
 // src/components/Photos.tsx
 import {useEffect, useState, useCallback} from 'react';
 import styles from './Photos.module.css';
-import Pagination from "../components/Pagination.tsx";
+import Pagination from "../components/common/Pagination.tsx";
 import {photosMeta} from '../data/photosMeta';  // ✅ 메타 불러오기
 
 // 에셋 자동 수집
@@ -19,7 +19,7 @@ type Photo = {
 };
 
 // 파일 → Photo 변환 + 메타 병합
-const photos: Photo[] = Object.entries(modules).map(([path, url]) => {
+const photos: Photo[] = Object.entries(modules).filter(([path]) => !path.endsWith("/background.jpg")).map(([path, url]) => {
     const filename = path.split('/').pop() || 'image';
     const base = filename.replace(/\.[^.]+$/, '');    // 확장자 제거
     const human = base.replace(/[-_]/g, ' ');         // 사람 읽기 좋게
@@ -111,7 +111,6 @@ export default function Photos() {
                 currentPage={currentPage}
                 totalPages={totalPages}
                 onPageChange={setCurrentPage}
-                data={pageData}
             />
 
             {/* 라이트박스 */}

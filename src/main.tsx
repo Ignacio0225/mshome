@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import {RouterProvider, createBrowserRouter} from 'react-router-dom'
+import {RouterProvider, createHashRouter} from 'react-router-dom'
 
 
 import "pretendard/dist/web/variable/pretendardvariable.css";
@@ -15,9 +15,13 @@ import Contact from "./pages/Contact.tsx";
 import Photos from "./pages/Photos.tsx";
 import About from "./pages/About.tsx";
 import Vision from "./pages/Vision.tsx";
+import Auth from "./pages/Auth.tsx";
+import Board from "./pages/Board.tsx";
+import Member from "./pages/Member.tsx";
+import Admin from "./pages/Admin.tsx";
 
 
-const router=createBrowserRouter([
+const router=createHashRouter([
 
     {
         path:'/',
@@ -29,6 +33,11 @@ const router=createBrowserRouter([
             {path:'/vision',element:<Vision/>},
             {path:'/about',element:<About/>},
             {path:'/photos',element:<Photos/>},
+            {path:'/auth',element:<Auth/>},
+            {path:'/member',element:<Member/>},
+            {path:'/admin',element:<Admin/>},
+            {path:'/board',element:<Board/>},
+            {path:'/board/:postId',element:<Board/>},
             {path:'*',element:<NotFound/>},
         ],
     },

@@ -59,38 +59,100 @@
   overflow-wrap:anywhere;
 }
 
-.mapPanel{
-  min-height:220px;
-  margin-top:18px;
-  padding:18px;
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:16px;
-  border-radius:8px;
-  overflow:hidden;
-  background:
-    linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.66)),
-    url("/company.jpg") center/cover no-repeat;
-  color:#fff;
+.mapPanel {
+  position: relative;
+  /* .mapPanel 내부의 a 태그를 이 박스 기준으로 absolute 배치하기 위해 relative 지정 */
+
+  min-height: 200px;
+  /* 지도 패널의 최소 높이를 200px로 지정 */
+
+  margin-top: 18px;
+  /* 위쪽 요소와 18px 간격을 둠 */
+
+  padding: 18px;
+  /* 패널 내부 여백을 18px로 지정 */
+
+  display: block;
+  /* 기존 flex를 제거하고 일반 블록 구조로 변경 */
+  /* iframe 위에 a를 absolute로 올릴 것이기 때문에 flex 배치가 필요 없음 */
+
+  border-radius: 8px;
+  /* 패널 모서리를 둥글게 처리 */
+
+  overflow: hidden;
+  /* 내부 요소가 패널 밖으로 튀어나가면 숨김 */
+
+  color: #fff;
+  /* 패널 내부 기본 글자색을 흰색으로 지정 */
 }
 
-.mapPanel div{
-  display:grid;
-  gap:4px;
+.map {
+  width: 100%;
+  /* iframe 지도를 부모 너비 전체로 채움 */
+
+  height: 320px;
+  /* 지도 높이를 320px로 고정 */
+
+  border: 0;
+  /* iframe 기본 테두리 제거 */
+
+  border-radius: 12px;
+  /* 지도 모서리를 둥글게 처리 */
+
+  margin-top: 10px;
+  /* 지도 위쪽에 10px 여백을 줌 */
+
+  display: block;
+  /* iframe 아래쪽에 생길 수 있는 미세한 공백 제거 */
 }
 
-.mapPanel span{
-  color:rgba(255,255,255,.86);
+.mapPanel div {
+  display: grid;
+  /* div 내부 요소를 grid 방식으로 세로 정렬 */
+
+  gap: 4px;
+  /* div 내부 요소 사이 간격을 4px로 지정 */
 }
 
-.mapPanel a{
-  flex:0 0 auto;
-  padding:10px 14px;
-  border-radius:8px;
-  background:#fff;
-  color:#111;
-  font-weight:800;
+.mapPanel span {
+  color: rgba(255, 255, 255, .86);
+  /* span 글자색을 약간 투명한 흰색으로 지정 */
+}
+
+.mapPanel a {
+  position: absolute;
+  /* a 태그를 .mapPanel 기준으로 원하는 위치에 고정 배치 */
+
+  right: 34px;
+  /* .mapPanel 오른쪽에서 34px 떨어진 위치 */
+  /* .mapPanel padding 18px + 버튼 여백 느낌을 고려한 값 */
+
+  bottom: 34px;
+  /* .mapPanel 아래쪽에서 34px 떨어진 위치 */
+
+  z-index: 10;
+  /* iframe 위에 a 버튼이 올라오도록 층 순서를 높임 */
+
+  padding: 10px 14px;
+  /* 버튼 안쪽 여백 지정 */
+
+  border-radius: 8px;
+  /* 버튼 모서리를 둥글게 처리 */
+
+  background: #fff;
+  /* 버튼 배경색을 흰색으로 지정 */
+
+  color: #111;
+  /* 버튼 글자색을 거의 검정색으로 지정 */
+
+  font-weight: 800;
+  /* 버튼 글자를 매우 굵게 표시 */
+
+  text-decoration: none;
+  /* a 태그 기본 밑줄 제거 */
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+  /* 지도 위에서 버튼이 떠 보이도록 그림자 추가 */
 }
 
 @media (max-width:720px){

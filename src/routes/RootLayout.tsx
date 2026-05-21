@@ -2,6 +2,8 @@
 // 중첩된 라우트가 가진 실제 콘텐츠가 렌더링되고 삽입되어야 할 위치에 사용됨
 import {Outlet} from 'react-router-dom'
 import Header from "../components/Header";
+import Footer from "../components/Footer";
+import AuthSessionManager from "../components/AuthSessionManager";
 
 
 
@@ -14,6 +16,8 @@ export default function RootLayout() {
       <main>
         <Outlet />
       </main>
+      <Footer/>
+      <AuthSessionManager/>
     </>
   );
 }

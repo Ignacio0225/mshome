@@ -41,13 +41,15 @@ export default function Contact() {
                 </div>
 
                 <h2>Address</h2>
-                <p>인천광역시 연수구 능허대로 136 KT송도빌딩 별관 1층 명성해운</p>
+                <p>인천광역시 연수구 능허대로 136 KT송도빌딩 별관 1층 (주)명성해운</p>
                 <p>1F, 136, Neungheodae-ro, Yeonsu-gu, Incheon, Republic of Korea (KT Songdo Annexed B/D) 〶 21960</p>
                 <div className={styles.mapPanel}>
-                    <div>
-                        <strong>KT송도빌딩 별관 1층</strong>
-                        <span>인천광역시 연수구 능허대로 136</span>
-                    </div>
+                    <iframe
+                            title="회사 위치"
+                            className={styles.map}
+                            src="https://maps.google.com/maps?q=인천광역시 연수구 능허대로 136&output=embed"
+                            loading="lazy"
+                        />
                     <a
                         href="https://maps.google.com/?q=인천광역시 연수구 능허대로 136"
                         target="_blank"

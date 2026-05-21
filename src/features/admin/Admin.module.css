@@ -1,0 +1,366 @@
+.page {
+  width: min(1120px, 100%);
+  margin: 36px auto 56px;
+  color: #fff;
+}
+
+.hero {
+  margin-bottom: 18px;
+}
+
+.hero p {
+  margin: 0 0 4px;
+  color: rgba(255, 255, 255, .72);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .18em;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.hero span {
+  display: block;
+  margin-top: 8px;
+  color: rgba(255, 255, 255, .82);
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.tabs button {
+  flex: 0 0 auto;
+  min-height: 42px;
+  padding: 9px 15px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .92);
+  color: #333;
+  font-weight: 900;
+}
+
+.tabs .activeTab {
+  background: #111;
+  color: #fff;
+}
+
+.message,
+.error,
+.notice {
+  margin-bottom: 14px;
+  padding: 13px 15px;
+  border-radius: 8px;
+  font-weight: 800;
+}
+
+.message {
+  background: #e9f7ef;
+  color: #146c43;
+}
+
+.error {
+  background: #fff1f1;
+  color: #b42318;
+}
+
+.notice {
+  display: grid;
+  gap: 10px;
+  background: rgba(255, 255, 255, .95);
+  color: #222;
+  border: 1px solid var(--line);
+}
+
+.notice a {
+  width: fit-content;
+  padding: 9px 14px;
+  border-radius: 8px;
+  background: #111;
+  color: #fff;
+}
+
+.tableShell,
+.chatLayout,
+.noticeEditorLayout {
+  background: rgba(255, 255, 255, .96);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, .06);
+}
+
+.noticeEditorLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
+  gap: 18px;
+  padding: 18px;
+}
+
+.noticeEditor,
+.noticeList {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+}
+
+.noticeEditor h2,
+.noticeList h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.noticeEditor input,
+.noticeEditor textarea {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #d9dee5;
+  border-radius: 8px;
+  background: #fff;
+  color: #111;
+  font-size: .98rem;
+}
+
+.noticeEditor textarea {
+  resize: vertical;
+}
+
+.noticeEditor button {
+  min-height: 44px;
+  border-radius: 8px;
+  background: #111;
+  color: #fff;
+  font-weight: 900;
+}
+
+.noticeList article {
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+  border: 1px solid #e8eaed;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.noticeList span,
+.noticeList p {
+  color: #777;
+  font-weight: 750;
+}
+
+.tableShell {
+  overflow-x: auto;
+}
+
+.userTable {
+  width: 100%;
+  min-width: 860px;
+  border-collapse: collapse;
+}
+
+.userTable th,
+.userTable td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #e8eaed;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.userTable th {
+  color: #555;
+  font-size: .9rem;
+  font-weight: 900;
+}
+
+.userTable td {
+  color: #222;
+  font-weight: 750;
+}
+
+.userTable select,
+.stateButton {
+  min-height: 36px;
+  border: 1px solid #d9dee5;
+  border-radius: 8px;
+  background: #fff;
+  color: #111;
+  font-weight: 800;
+}
+
+.userTable select {
+  padding: 0 10px;
+}
+
+.stateButton {
+  padding: 0 12px;
+}
+
+.hint {
+  margin: 0;
+  padding: 14px 16px;
+  color: #6c757d;
+  font-weight: 800;
+}
+
+.chatLayout {
+  display: grid;
+  grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+  min-height: 560px;
+  overflow: hidden;
+}
+
+.roomList {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 14px;
+  border-right: 1px solid #e8eaed;
+}
+
+.roomList button {
+  display: grid;
+  gap: 5px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f6f7f8;
+  color: #222;
+  text-align: left;
+}
+
+.roomList .activeRoom {
+  background: #111;
+  color: #fff;
+}
+
+.roomList span {
+  color: inherit;
+  opacity: .72;
+  font-size: .84rem;
+}
+
+.chatPanel {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  min-width: 0;
+}
+
+.chatHeader {
+  padding: 18px 20px;
+  border-bottom: 1px solid #e8eaed;
+}
+
+.chatHeader h2 {
+  margin: 0 0 4px;
+  font-size: 1.25rem;
+}
+
+.chatHeader p {
+  margin: 0;
+  color: #777;
+  font-weight: 750;
+}
+
+.messages {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 18px;
+  overflow-y: auto;
+}
+
+.bubble {
+  width: min(620px, 86%);
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: #f1f3f5;
+}
+
+.bubble span {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+  font-size: .82rem;
+  font-weight: 900;
+}
+
+.bubble p {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.bubble time {
+  display: block;
+  margin-top: 7px;
+  color: #888;
+  font-size: .78rem;
+  font-weight: 750;
+}
+
+.mine {
+  justify-self: end;
+  background: #111;
+  color: #fff;
+}
+
+.mine span,
+.mine time {
+  color: rgba(255, 255, 255, .72);
+}
+
+.replyForm {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  padding: 14px;
+  border-top: 1px solid #e8eaed;
+}
+
+.replyForm input {
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #d9dee5;
+  border-radius: 8px;
+}
+
+.replyForm button {
+  min-width: 82px;
+  border-radius: 8px;
+  background: #111;
+  color: #fff;
+  font-weight: 900;
+}
+
+@media (max-width: 820px) {
+  .page {
+    width: calc(100vw - 24px);
+    max-width: calc(100vw - 24px);
+    margin: 20px auto 36px;
+  }
+
+  .hero h1 {
+    font-size: 1.55rem;
+  }
+
+  .chatLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .noticeEditorLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .roomList {
+    border-right: 0;
+    border-bottom: 1px solid #e8eaed;
+  }
+
+  .replyForm {
+    grid-template-columns: 1fr;
+  }
+}

@@ -31,6 +31,10 @@
 .tocLink{
   display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 10px;
   align-items: center; text-decoration: none;
+  width: 100%;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
   background: var(--card); color: var(--ink);
   border: 1px solid var(--line);
   padding: 8px 10px; border-radius: 12px;
@@ -218,6 +222,11 @@
   font-size:.92rem;
   line-height:1.55;
   word-break:keep-all;
+}
+.main{
+    font-size:25px;
+    font-weight:800;
+
 }
 
 .figure{ margin:0; }

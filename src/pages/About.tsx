@@ -16,6 +16,10 @@ const sections: Section[] = [
 ];
 
 export default function About() {
+    const scrollToSection = (id: string) => {
+        document.getElementById(id)?.scrollIntoView({behavior: "smooth", block: "start"});
+    };
+
     return (
         <div className={styles.container}>
             {/* 상단 헤더 */}
@@ -29,13 +33,17 @@ export default function About() {
                     <ol className={styles.tocList}>
                         {sections.map((s, idx) => (
                             <li key={s.id}>
-                                <a href={`#${s.id}`} className={styles.tocLink}>
+                                <button
+                                    type="button"
+                                    className={styles.tocLink}
+                                    onClick={() => scrollToSection(s.id)}
+                                >
                                     <span className={styles.badge}>{idx + 1}</span>
                                     <div className={styles.tocText}>
                                         <strong>{s.title}</strong>
                                         {s.subtitle && <small>{s.subtitle}</small>}
                                     </div>
-                                </a>
+                                </button>
                             </li>
                         ))}
                     </ol>
@@ -47,7 +55,7 @@ export default function About() {
                     <section id="ro-ro" className={styles.section} aria-labelledby="ro-ro-title">
                         <header className={styles.sectionHeader}>
                             <h2 id="ro-ro-title">RO-RO</h2>
-                            <p className={styles.sectionSubtitle}>중고차·특수차량 전용 롤온/롤오프 운송</p>
+                            <p className={styles.sectionSubtitle}>신차/중고차·특수차량 전용 롤온/롤오프 운송</p>
                         </header>
 
                         <div className={styles.card}>
@@ -55,7 +63,7 @@ export default function About() {
                             <p>차량/장비를 컨테이너 적입 없이 선내 램프로 직접 적재·양하하는 운송 방식입니다.</p>
 
                             <ul className={styles.list}>
-                                <li>명성해운은 국적 선사, 글로벌 Ro-Ro 선사, 해외 터미널과의 네트워크를 기반으로 중동, 아프리카, 남미, 중앙아시아 등 전략적
+                                <li>(주)명성해운은 국적 선사, 글로벌 Ro-Ro 선사, 해외 터미널과의 네트워크를 기반으로 중동, 아프리카, 남미, 중앙아시아 등 전략적
                                     거점 항로를 안정적으로 운영하고 있습니다. Ro-Ro 서비스는 한 번에 수백 대에서 수천 대까지 차량 운송이 가능해 컨테이너 대비 운임이 합리적이고, 운송
                                     효율성이 극대화됩니다. 이를 통해 정확한 도착 일정과 원활한 하역 서비스를 보장합니다.
                                 </li>
@@ -83,8 +91,8 @@ export default function About() {
                             <p>현장 실사부터 포장/적재 설계, 특수장비/선적선택, 현지 운송까지 토털 솔루션을 제공합니다.</p>
 
                             <ul className={styles.list}>
-                                <li>명성해운은 일반 화물(General Cargo)부터 대형·특수화물(Project Cargo)까지 폭넓은 운송 경험을 보유하고 있습니다. 건설 장비,
-                                    중장비, 플랜트 기자재, 산업 설비 등 규격·중량 제한이 있는 화물도 안전하게 운송할 수 있는 노하우를 갖추고 있습니다.
+                                <li>(주)명성해운은 일반 화물(General Cargo)부터 대형·특수화물(Project Cargo)까지 폭넓은 운송 경험을 보유하고 있습니다.</li>
+                                <li> 건설 장비,중장비, 플랜트 기자재, 산업 설비 등 규격·중량 제한이 있는 화물도 안전하게 운송할 수 있는 노하우를 갖추고 있습니다.
                                 </li>
                                 <li>화물의 규격, 중량, 목적지를 고려해 Ro-Ro, 벌크선, 컨테이너선, 플랫랙 등 다양한 운송 방식을 조합합니다.</li>
                                 <li>전용 하역 장비, 래싱(Lashing), 국제 안전 규정(IMO)을 기준으로 프로젝트별 위험을 최소화합니다.</li>
@@ -113,7 +121,7 @@ export default function About() {
 
                             <ol className={styles.list}>
                                 <li>안정적이고 신뢰할 수 있는 운송<br/>
-                                    명성해운은 글로벌 컨테이너 선사 및 해외 터미널과의 긴밀한 협력을 통해 세계 주요 항로에서 안정적이고 신뢰할 수 있는 운송 서비스를 제공합니다. 정확한
+                                    (주)명성해운은 글로벌 컨테이너 선사 및 해외 터미널과의 긴밀한 협력을 통해 세계 주요 항로에서 안정적이고 신뢰할 수 있는 운송 서비스를 제공합니다. 정확한
                                     출항 및 도착 스케줄을 기반으로, 안전하고 예측 가능한 물류 관리가 가능합니다.
                                 </li>
                                 <li>다양한 컨테이너 옵션 제공<br/>
@@ -143,7 +151,7 @@ export default function About() {
                                     긴급 부품, 고가 제품, 샘플 화물, 전자제품, 의약품 등 시간이 중요한 화물을 전 세계 어디든 안전하고 정확하게 운송합니다.
                                 </li>
                                 <li>글로벌 네트워크를 통한 안정적 스케줄<br/>
-                                    명성해운은 글로벌 주요 항공사 및 해외 물류 파트너사와의 협력 네트워크를 보유하고 있어
+                                    (주)명성해운은 글로벌 주요 항공사 및 해외 물류 파트너사와의 협력 네트워크를 보유하고 있어<br/>
                                     중동, 아프리카, 남미, 유럽, 북미 등 전 세계 주요 허브 공항을 연결하는 안정적 운송 스케줄을 제공합니다.
                                 </li>
                                 <li>다양한 화물 맞춤 솔루션<br/>
@@ -187,7 +195,8 @@ export default function About() {
                             <h3 className={styles.subTitle}>주요 서비스</h3>
                             <ol className={styles.list}>
                                 <li>25년 노하우 기반의 무역 서비스<br/>
-                                    명성해운은 2004년 설립 이후 중동·아프리카·중앙아시아·남미 등 전 세계 다양한 시장과의 무역 경험을 쌓아왔습니다. 중고차, 기계 설비, 화학 제품,
+                                    (주)명성해운은 2004년 설립 이후 중동·아프리카·중앙아시아·남미 등 전 세계 다양한 시장과의 무역 경험을 쌓아왔습니다.<br/>
+                                    신차/중고차, 기계 설비, 화학 제품,
                                     생활용품 등 다양한 품목의 수출입을 전문적으로 지원하며 글로벌 비즈니스 파트너로서 고객의 경쟁력을 강화합니다.
                                 </li>
                                 <li>수출입 원스톱 서비스<br/>

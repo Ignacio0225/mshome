@@ -1,0 +1,118 @@
+/* src/components/Footer.module.css */
+
+/* 푸터 전체 영역입니다. */
+.footer {
+  /* 푸터를 화면에 고정하지 않고 일반 문서 흐름에 따라 배치합니다. */
+  position: static;
+
+  /* 푸터가 화면 전체 가로폭을 차지하게 합니다. */
+  width: 100%;
+  flex-shrink: 0;
+
+  /* 사진 예시와 비슷한 어두운 블루그레이 배경색입니다. */
+    background: linear-gradient(
+  180deg,
+  rgba(255,255,255,.9),
+  rgba(255,255,255,.82)
+);
+
+
+  /* 푸터 내부 위아래 여백입니다. */
+  padding: 24px 0 26px;
+
+  /* 푸터 기본 글자색입니다. */
+  color: rgba(21, 21, 21, 0.62);
+
+  /* 다른 요소 위에 강제로 올라오지 않게 합니다. */
+  z-index: auto;
+}
+
+/* 푸터 내부 내용 정렬 박스입니다. */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    width: 100%;
+
+  /* 푸터 내용의 최대 너비를 제한합니다. */
+  max-width: 1180px;
+
+  /* 좌우 자동 여백으로 가운데 정렬합니다. */
+  margin: 0 auto;
+
+  /* 화면이 좁을 때 글자가 화면 끝에 붙지 않도록 좌우 여백을 줍니다. */
+  padding: 0 24px;
+
+  /* padding을 너비 계산에 포함합니다. */
+  box-sizing: border-box;
+}
+
+/* 주소, TEL, FAX 줄입니다. */
+.info {
+  /* p 태그 기본 margin을 제거합니다. */
+  margin: 0;
+
+  /* 글자 크기를 작게 설정합니다. */
+  font-size: 13px;
+
+  /* 줄 높이를 설정합니다. */
+  line-height: 1.7;
+
+  /* 글자 간격을 살짝 조정합니다. */
+  letter-spacing: -0.01em;
+}
+.companyName {
+    font-size: 25px;
+}
+.logoFooter {
+
+ display: flex;
+    align-items: center;
+}
+/* logoFooter 안에 있는 img 태그의 크기를 줄입니다. */
+.logoFooter img {
+  width: 300px;
+  height: auto;
+  display: block;
+}
+
+/* Copyright 줄입니다. */
+.copy {
+  /* 위 문장과 살짝 간격을 줍니다. */
+  margin: 4px 0 0;
+
+  /* 글자 크기를 첫 줄과 맞춥니다. */
+  font-size: 13px;
+
+  /* 줄 높이를 설정합니다. */
+  line-height: 1.7;
+
+  /* 글자색을 살짝 연하게 만듭니다. */
+  color: rgba(0, 0, 0, 0.58);
+
+  /* 글자 간격을 살짝 조정합니다. */
+  letter-spacing: -0.01em;
+}
+
+/* 모바일 대응입니다. */
+@media (max-width: 768px) {
+  /* 모바일에서 푸터 여백을 줄입니다. */
+  .footer {
+    padding: 22px 0;
+  }
+
+  /* 모바일에서 좌우 여백을 줄입니다. */
+  .container {
+    padding: 0 18px;
+  }
+
+  /* 모바일에서 글자 크기를 줄입니다. */
+  .info {
+    font-size: 12px;
+  }
+
+  /* 모바일에서 글자 크기를 줄입니다. */
+  .copy {
+    font-size: 12px;
+  }
+}

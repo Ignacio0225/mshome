@@ -45,3 +45,9 @@
   .sectionTitle{ font-size:1.15rem; }
   .text, .list li{ font-size:.94rem; line-height:1.65; }
 }
+
+.main{
+    font-size:25px;
+    font-weight:800;
+
+}
