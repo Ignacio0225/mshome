@@ -103,7 +103,7 @@ export default function Board() {
       window.removeEventListener("mshome-auth-change", syncUser);
       window.removeEventListener("storage", syncUser);
     };
-  }, [postId, activeBoard]);
+  }, [postId, activeBoard, currentCategory, loadPosts, resetPosts]);
 
   async function handlePageChange(nextPage: number) {
     setError("");

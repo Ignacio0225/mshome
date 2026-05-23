@@ -3,10 +3,7 @@ import { api, type PostCategory } from "../../api/client";
 // Board feature에서 쓰는 API만 모아둔 얇은 래퍼입니다.
 export const boardApi = {
   listPosts(params: { page?: number; size?: number; q?: string; category?: PostCategory }) {
-    if (params.category === "notice") {
-      return api.listNoticePosts(params);
-    }
-    return api.listQnaPosts(params);
+    return api.listPosts(params);
   },
   getPost(postId: number) {
     return api.getPost(postId);

@@ -24,9 +24,9 @@ export const adminApi = {
     return api.createDirectChatMessage(roomId, content);
   },
   listNotices() {
-    return api.listNoticePosts({ page: 1, size: 5 });
+    return api.listPosts({ category: "notice", page: 1, size: 5 });
   },
   createNotice(payload: { title: string; content: string }) {
-    return api.createNotice(payload);
+    return api.createPost({ ...payload, category: "notice", is_secret: false });
   },
 };

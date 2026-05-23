@@ -30,7 +30,7 @@ export default function Admin() {
         setError(loadError instanceof Error ? loadError.message : "관리자 정보를 불러오지 못했습니다.");
       })
       .finally(() => setIsLoading(false));
-  }, []);
+  }, [loadAdminData]);
 
   async function handleRoleChange(userId: number, role: UserRole) {
     setError("");

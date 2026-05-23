@@ -67,22 +67,6 @@ export const api = {
     const query = search.toString();
     return request<PageData<PostListItem>>(`/posts${query ? `?${query}` : ""}`, { auth: true });
   },
-  listQnaPosts(params: { page?: number; size?: number; q?: string } = {}) {
-    const search = new URLSearchParams();
-    if (params.page) search.set("page", String(params.page));
-    if (params.size) search.set("size", String(params.size));
-    if (params.q) search.set("q", params.q);
-    const query = search.toString();
-    return request<PageData<PostListItem>>(`/posts/qna${query ? `?${query}` : ""}`, { auth: true });
-  },
-  listNoticePosts(params: { page?: number; size?: number; q?: string } = {}) {
-    const search = new URLSearchParams();
-    if (params.page) search.set("page", String(params.page));
-    if (params.size) search.set("size", String(params.size));
-    if (params.q) search.set("q", params.q);
-    const query = search.toString();
-    return request<PageData<PostListItem>>(`/posts/notice${query ? `?${query}` : ""}`, { auth: true });
-  },
   getPost(postId: number) {
     return request<Post>(`/posts/${postId}`, { auth: true });
   },
@@ -91,9 +75,6 @@ export const api = {
   },
   updatePost(postId: number, payload: { title?: string; content?: string; is_secret?: boolean }) {
     return request<Post>(`/posts/${postId}`, { method: "PATCH", body: payload, auth: true });
-  },
-  createNotice(payload: { title: string; content: string }) {
-    return request<Post>("/posts/notice", { method: "POST", body: { ...payload, category: "notice", is_secret: false }, auth: true });
   },
   deletePost(postId: number) {
     return request<{ message: string }>(`/posts/${postId}`, { method: "DELETE", auth: true });

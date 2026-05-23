@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { getStoredUser } from "../../../api/client";
 import { adminApi } from "../api";
 import type { DirectChatRoom, DirectChatRoomListItem, PostListItem, User } from "../types";
@@ -10,8 +10,13 @@ export function useAdminData() {
   const [rooms, setRooms] = useState<DirectChatRoomListItem[]>([]);
   const [notices, setNotices] = useState<PostListItem[]>([]);
   const [selectedRoom, setSelectedRoom] = useState<DirectChatRoom | null>(null);
+  const selectedRoomIdRef = useRef<number | null>(null);
 
-  async function loadAdminData(nextRoomId?: number) {
+  useEffect(() => {
+    selectedRoomIdRef.current = selectedRoom?.id ?? null;
+  }, [selectedRoom?.id]);
+
+  const loadAdminData = useCallback(async (nextRoomId?: number) => {
     const [me, userList, roomList, noticePage] = await Promise.all([
       adminApi.me(),
       adminApi.listUsers(),
@@ -23,9 +28,9 @@ export function useAdminData() {
     setRooms(roomList);
     setNotices(noticePage.items);
 
-    const targetRoomId = nextRoomId ?? selectedRoom?.id ?? roomList[0]?.id;
+    const targetRoomId = nextRoomId ?? selectedRoomIdRef.current ?? roomList[0]?.id;
     setSelectedRoom(targetRoomId ? await adminApi.getDirectChatRoom(targetRoomId) : null);
-  }
+  }, []);
 
   return { currentUser, users, setUsers, rooms, notices, selectedRoom, setSelectedRoom, loadAdminData };
 }

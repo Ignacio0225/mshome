@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import type { PageData, PostCategory, PostListItem } from "../types";
 import { boardApi } from "../api";
 
@@ -15,19 +15,19 @@ export function useBoardPosts(pageSize: number) {
   const [pageData, setPageData] = useState<PageData<PostListItem>>({ ...EMPTY_PAGE, size: pageSize });
   const [page, setPage] = useState(1);
 
-  function resetPosts() {
+  const resetPosts = useCallback(() => {
     setPageData({ ...EMPTY_PAGE, size: pageSize });
     setPage(1);
-  }
+  }, [pageSize]);
 
-  async function loadPosts(nextPage: number, keyword: string, category: PostCategory) {
+  const loadPosts = useCallback(async (nextPage: number, keyword: string, category: PostCategory) => {
     const data = await boardApi.listPosts({ page: nextPage, size: pageSize, q: keyword, category });
     const filteredItems = data.items.filter((post) => post.category === category);
     const safeData = filteredItems.length === data.items.length ? data : { ...data, items: filteredItems, total: filteredItems.length };
     setPageData(safeData);
     setPage(safeData.page);
     return safeData;
-  }
+  }, [pageSize]);
 
   return { page, pageData, setPage, setPageData, resetPosts, loadPosts };
 }
